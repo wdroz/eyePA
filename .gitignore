@@ -14,3 +14,12 @@
 
 #astah bullshit
 *.bak
+
+#executable
+*.exe
+
+#VS2013
+*.suo
+*.user
+obj
+bin
