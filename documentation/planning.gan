@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><project name="eyePA" company="HES-SI" webLink="http://" view-date="2014-02-24" view-index="0" gantt-divider-location="388" resource-divider-location="300" version="2.0" locale="fr">
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
-        <field id="tpd3" name="Nom" width="54" order="0"/>
-        <field id="tpd4" name="Date de début" width="22" order="1"/>
+        <field id="tpd3" name="Nom" width="64" order="0"/>
+        <field id="tpd4" name="Date de début" width="13" order="1"/>
         <field id="tpd5" name="Date de fin" width="22" order="2"/>
     </view>
     <view id="resource-table">
-        <field id="0" name="Nom" width="56" order="0"/>
-        <field id="1" name="Rôle par défaut" width="43" order="1"/>
+        <field id="0" name="Nom" width="50" order="0"/>
+        <field id="1" name="Rôle par défaut" width="49" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -58,7 +58,10 @@
             <depend id="10" type="2" difference="0" hardness="Strong"/>
             <task id="7" name="créations des tests" meeting="false" start="2014-03-10" duration="1" complete="0" expand="true"/>
             <task id="8" name="créations des mocks" meeting="false" start="2014-03-10" duration="1" complete="0" expand="true"/>
-            <task id="9" name="incrément logiciel" meeting="false" start="2014-03-10" duration="3" complete="0" expand="true"/>
+            <task id="9" name="navigation dans des dossiers" meeting="false" start="2014-03-10" duration="2" complete="0" expand="true">
+                <depend id="33" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="33" name="afficher les images en grand" meeting="false" start="2014-03-24" duration="1" complete="0" expand="true"/>
         </task>
         <task id="10" name="release du prototype v1" color="#6699ff" meeting="true" start="2014-03-31" duration="0" complete="0" expand="true">
             <depend id="12" type="2" difference="0" hardness="Strong"/>
@@ -70,7 +73,10 @@
         </task>
         <task id="15" name="seconde itération" meeting="false" start="2014-04-07" duration="3" complete="0" expand="true">
             <depend id="18" type="2" difference="0" hardness="Strong"/>
-            <task id="16" name="incrément logiciel" meeting="false" start="2014-04-07" duration="3" complete="0" expand="true"/>
+            <task id="16" name="sélection d'images" meeting="false" start="2014-04-07" duration="1" complete="0" expand="true">
+                <depend id="34" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="34" name="navigation avec tobii rex" meeting="false" start="2014-04-14" duration="2" complete="0" expand="true"/>
         </task>
         <task id="18" name="release du prototype v2" color="#6699ff" meeting="true" start="2014-04-28" duration="0" complete="0" expand="true">
             <depend id="19" type="2" difference="0" hardness="Strong"/>
@@ -83,10 +89,12 @@
         <task id="23" name="itération final" meeting="false" start="2014-05-05" duration="4" complete="0" expand="true">
             <depend id="30" type="2" difference="0" hardness="Strong"/>
             <task id="27" name="refactoring" meeting="false" start="2014-05-05" duration="1" complete="0" expand="true"/>
-            <task id="24" name="terminer les incréments logiciels" meeting="false" start="2014-05-05" duration="3" complete="0" expand="true">
+            <task id="24" name="zoom" meeting="false" start="2014-05-05" duration="2" complete="0" expand="true">
                 <depend id="25" type="2" difference="0" hardness="Strong"/>
+                <depend id="46" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="25" name="valider tous les tests" meeting="false" start="2014-05-26" duration="1" complete="0" expand="true"/>
+            <task id="46" name="scroll" meeting="false" start="2014-05-19" duration="1" complete="0" expand="true"/>
+            <task id="25" name="valider tous les tests" meeting="false" start="2014-05-19" duration="1" complete="0" expand="true"/>
             <task id="28" name="valider la documentation" meeting="false" start="2014-05-05" duration="4" complete="0" expand="true"/>
         </task>
         <task id="30" name="release finale" color="#6699ff" meeting="true" start="2014-06-02" duration="0" complete="0" expand="true"/>
@@ -105,8 +113,8 @@
         <displaycolumn property-id="tpd9" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd8" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd0" order="-1" width="75" visible="false"/>
-        <displaycolumn property-id="tpd3" order="0" width="211" visible="true"/>
-        <displaycolumn property-id="tpd4" order="1" width="87" visible="true"/>
+        <displaycolumn property-id="tpd3" order="0" width="248" visible="true"/>
+        <displaycolumn property-id="tpd4" order="1" width="50" visible="true"/>
         <displaycolumn property-id="tpd5" order="2" width="86" visible="true"/>
     </taskdisplaycolumns>
     <previous/>
