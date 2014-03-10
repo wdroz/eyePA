@@ -8,5 +8,9 @@ namespace EyePA
 {
     class BigImageView : View, Scrollable, Zoomable
     {
+        public override void render()
+        {
+
+        }
     }
 }

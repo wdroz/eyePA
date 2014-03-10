@@ -8,5 +8,9 @@ namespace EyePA
 {
     class ButtonView : View, Activable, Watchable
     {
+        public override void render()
+        {
+
+        }
     }
 }

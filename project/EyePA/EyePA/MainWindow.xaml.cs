@@ -20,6 +20,10 @@ namespace EyePA
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private String folder;
+        private ListView listView;
+        private ImageView imageView;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,9 +33,19 @@ namespace EyePA
 
         public void formInit()
         {
+            Config config = Config.getInstance();
+            folder = config.DefaultPath;
 
+
+            this.GUIFolderPath.Content = folder;
+            this.listView = new ListView(this.GUIListView);
+            String chemin = folder + "\\nwkl45v7.jpg";
+            System.Console.WriteLine(chemin);
+            imageView = new ImageView(chemin);
+            this.imageView.renderTo(this.GUIImageTest);
         }
 
+        
         
     }
 }
