@@ -57,6 +57,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ActionActivate.cs" />
+    <Compile Include="ActionScroll.cs" />
+    <Compile Include="ActionWatch.cs" />
+    <Compile Include="ActionZoom.cs" />
+    <Compile Include="Activable.cs" />
+    <Compile Include="BigImageView.cs" />
+    <Compile Include="ButtonView.cs" />
+    <Compile Include="EventManager.cs" />
+    <Compile Include="ImageView.cs" />
+    <Compile Include="KeyAction.cs" />
+    <Compile Include="KeyHandler.cs" />
+    <Compile Include="ListView.cs" />
+    <Compile Include="QueryHandler.cs" />
+    <Compile Include="Scrollable.cs" />
+    <Compile Include="View.cs" />
+    <Compile Include="Watchable.cs" />
+    <Compile Include="Zoomable.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -23,6 +23,15 @@ namespace EyePA
         public MainWindow()
         {
             InitializeComponent();
+
+            formInit();
         }
+
+        public void formInit()
+        {
+
+        }
+
+        
     }
 }
