@@ -59,7 +59,14 @@ namespace EyePA
             try
             {
                 int m = GUIListView.SelectedIndex;
+                foreach(View toto in listView.getListView)
+                {
+                    ImageView img = (ImageView)toto;
+                    img.stopWatching();
+                }
+                
                 ImageView imv = (ImageView)listView.getListView.ElementAt(m);
+                imv.startWatching(0, 0);
                 bigImageView.setImageView(imv);
                 this.bigImageView.renderUI();
             }
@@ -68,6 +75,11 @@ namespace EyePA
                 // crash si on change de rép
             }
             
+        }
+
+        private void GUIBtnQuit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

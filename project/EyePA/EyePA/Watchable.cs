@@ -8,5 +8,7 @@ namespace EyePA
 {
     interface Watchable
     {
+        void startWatching(double x, double y);
+        void stopWatching();
     }
 }

@@ -8,5 +8,14 @@ namespace EyePA
 {
     class ActionWatch : KeyAction, Watchable
     {
+        public void startWatching(double x, double y)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void stopWatching()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
