@@ -71,6 +71,7 @@
     <Compile Include="KeyAction.cs" />
     <Compile Include="KeyHandler.cs" />
     <Compile Include="ListView.cs" />
+    <Compile Include="ListViewImage.cs" />
     <Compile Include="QueryHandler.cs" />
     <Compile Include="Scrollable.cs" />
     <Compile Include="View.cs" />

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace EyePA
 {
-    public class ListView : View
+    public abstract class ListView : View
     {
 
-        private List<View> listView;
-        private System.Windows.Controls.ListView GUIListView;
+        protected List<View> listView;
+        protected System.Windows.Controls.ListView GUIListView;
 
         public ListView()
         {
@@ -27,9 +28,9 @@ namespace EyePA
             listView.Add(v);
         }
 
-        public override void render()
+        public override FrameworkElement renderUI()
         {
-            
+        return null;
         }
     }
 }

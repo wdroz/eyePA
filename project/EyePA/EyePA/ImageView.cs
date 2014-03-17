@@ -27,9 +27,11 @@ namespace EyePA
             
         }
 
-        public override void render()
+        public override FrameworkElement renderUI()
         {
-            
+            this.image.Width = Config.getInstance().ImagesW;
+            this.image.Height = Config.getInstance().ImagesH;
+            return this.image;
         }
 
         public void renderTo(Image img)

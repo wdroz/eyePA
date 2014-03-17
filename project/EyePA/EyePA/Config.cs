@@ -11,15 +11,29 @@ namespace EyePA
 
         private static Config instance = null;
         private String defaultPath;
+        private int imagesW;
+        private int imagesH;
 
         public String DefaultPath
         {
             get { return this.defaultPath; }
         }
 
+        public int ImagesW
+        {
+            get { return this.imagesW; }
+        }
+
+        public int ImagesH
+        {
+            get { return this.imagesH; }
+        }
+
         private Config()
         {
             this.defaultPath = "C:\\images";
+            this.imagesW = 200;
+            this.imagesH = 150;
         }
         public static Config getInstance()
         {
