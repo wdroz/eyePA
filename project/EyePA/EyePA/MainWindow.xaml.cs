@@ -34,24 +34,30 @@ namespace EyePA
         {
             Config config = Config.getInstance();
             folder = config.DefaultPath;
+            BtnCanvasTest toto = new BtnCanvasTest(1, 1, 40, 40);
 
-
-            this.GUIFolderPath.Content = folder;
-            this.listView = new ListViewImage(folder,this.GUIListView);
+            
             //String chemin = folder + "\\nwkl45v7.jpg";
             //System.Console.WriteLine(chemin);
             //imageView = new ImageView(chemin);
-
-            BtnCanvasTest toto = new BtnCanvasTest(1,1,40,40);
+            updateFolder();
 
             toto.render(this.GUIBigPicture);
-            listView.renderUI();
+            
 
         }
 
         public void updateFolder()
         {
+            this.listView = new ListViewImage(folder, this.GUIListView);
+            listView.renderUI();
+            this.GUIFolderPath.Content = folder;
+        }
 
+        private void GUIBtnBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            this.folder = "C:\\images2";
+            this.updateFolder();
         }
     }
 }

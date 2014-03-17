@@ -13,6 +13,7 @@ namespace EyePA
         private String defaultPath;
         private int imagesW;
         private int imagesH;
+        private int numberOfImages;
 
         public String DefaultPath
         {
@@ -22,11 +23,17 @@ namespace EyePA
         public int ImagesW
         {
             get { return this.imagesW; }
+            set { this.imagesW = value; }
         }
 
         public int ImagesH
         {
             get { return this.imagesH; }
+            set { this.imagesH = value; }
+        }
+        public int NumberOfImages
+        {
+            get { return this.numberOfImages; }
         }
 
         private Config()
@@ -34,6 +41,7 @@ namespace EyePA
             this.defaultPath = "C:\\images";
             this.imagesW = 200;
             this.imagesH = 150;
+            this.numberOfImages = 5;
         }
         public static Config getInstance()
         {

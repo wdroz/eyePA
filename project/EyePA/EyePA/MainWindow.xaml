@@ -12,7 +12,7 @@
         </ListView>
         <Label x:Name="GUIFolderPath" Content="chemin" HorizontalAlignment="Left" Margin="64,588,0,0" VerticalAlignment="Top" Width="88"/>
         <Button x:Name="GUIBtnQuit" Content="Quit" HorizontalAlignment="Left" Height="133" Margin="885,36,0,0" VerticalAlignment="Top" Width="210"/>
-        <Button x:Name="GUIBtnBrowse" Content="Change Folder" HorizontalAlignment="Left" Height="118" Margin="885,187,0,0" VerticalAlignment="Top" Width="210"/>
+        <Button x:Name="GUIBtnBrowse" Content="Change Folder" HorizontalAlignment="Left" Height="118" Margin="885,187,0,0" VerticalAlignment="Top" Width="210" Click="GUIBtnBrowse_Click"/>
         <Canvas x:Name="GUIBigPicture" HorizontalAlignment="Left" Height="316" Margin="64,47,0,0" VerticalAlignment="Top" Width="614"/>
         <Image x:Name="GUIImageTest" HorizontalAlignment="Left" Height="133" Margin="952,36,0,0" VerticalAlignment="Top" Width="143"/>
 
