@@ -13,6 +13,11 @@ namespace EyePA
         protected List<View> listView;
         protected System.Windows.Controls.ListView GUIListView;
 
+        public List<View> getListView
+        {
+            get {return listView;}
+        }
+
         public ListView()
         {
             listView = new List<View>();
@@ -30,7 +35,7 @@ namespace EyePA
 
         public override FrameworkElement renderUI()
         {
-        return null;
+            return null;
         }
     }
 }

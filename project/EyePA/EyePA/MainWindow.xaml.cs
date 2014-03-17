@@ -23,6 +23,7 @@ namespace EyePA
 
         private String folder;
         private ListView listView;
+        private BigImageView bigImageView;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,30 +35,39 @@ namespace EyePA
         {
             Config config = Config.getInstance();
             folder = config.DefaultPath;
-            BtnCanvasTest toto = new BtnCanvasTest(1, 1, 40, 40);
-
-            
-            //String chemin = folder + "\\nwkl45v7.jpg";
-            //System.Console.WriteLine(chemin);
-            //imageView = new ImageView(chemin);
+          
             updateFolder();
-
-            toto.render(this.GUIBigPicture);
-            
-
         }
 
         public void updateFolder()
         {
             this.listView = new ListViewImage(folder, this.GUIListView);
+            ImageView iv = (ImageView)listView.getListView.ElementAt(0);
+            this.bigImageView = new BigImageView(iv, GUIBigPicture);
             listView.renderUI();
-            this.GUIFolderPath.Content = folder;
+            bigImageView.renderUI();
         }
 
         private void GUIBtnBrowse_Click(object sender, RoutedEventArgs e)
         {
             this.folder = "C:\\images2";
             this.updateFolder();
+        }
+
+        private void GUIListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                int m = GUIListView.SelectedIndex;
+                ImageView imv = (ImageView)listView.getListView.ElementAt(m);
+                bigImageView.setImageView(imv);
+                this.bigImageView.renderUI();
+            }
+            catch
+            {
+                // crash si on change de rép
+            }
+            
         }
     }
 }

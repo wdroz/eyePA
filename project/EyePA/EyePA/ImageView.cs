@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace EyePA
 {
-    public class ImageView : View
+    public class ImageView : View, Watchable
     {
 
         private Image image;

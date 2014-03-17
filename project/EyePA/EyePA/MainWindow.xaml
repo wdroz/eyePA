@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="655" Width="1220">
     <Grid>
-        <ListView x:Name="GUIListView" HorizontalAlignment="Left" Height="200" Margin="64,383,0,0" VerticalAlignment="Top" Width="1031">
+        <ListView x:Name="GUIListView" HorizontalAlignment="Left" Height="200" Margin="64,383,0,0" VerticalAlignment="Top" Width="1031" SelectionChanged="GUIListView_SelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"></StackPanel>
