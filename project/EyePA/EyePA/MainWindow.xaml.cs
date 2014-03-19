@@ -46,6 +46,7 @@ namespace EyePA
             this.bigImageView = new BigImageView(iv, GUIBigPicture);
             listView.renderUI();
             bigImageView.renderUI();
+            this.GUIFolderPath.Content = folder;
         }
 
         private void GUIBtnBrowse_Click(object sender, RoutedEventArgs e)
