@@ -24,6 +24,8 @@ namespace EyePA
         private String folder;
         private ListView listView;
         private BigImageView bigImageView;
+        private EventManager eventManager;
+        private QueryHandler queryHandler;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +37,8 @@ namespace EyePA
         {
             Config config = Config.getInstance();
             folder = config.DefaultPath;
+            eventManager = new EventManager();
+            queryHandler = new QueryHandler(eventManager);
           
             updateFolder();
         }
@@ -51,7 +55,7 @@ namespace EyePA
 
         private void GUIBtnBrowse_Click(object sender, RoutedEventArgs e)
         {
-            this.folder = "C:\\images2";
+            this.folder = "C:\\imagesBig";
             this.updateFolder();
         }
 

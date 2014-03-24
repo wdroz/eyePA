@@ -8,5 +8,9 @@ namespace EyePA
 {
     class ActionZoom : KeyAction, Zoomable
     {
+        public ActionZoom(double x, double y, double w, double h) : base(x,y,w,h)
+        {
+
+        }
     }
 }

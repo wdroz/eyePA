@@ -8,5 +8,9 @@ namespace EyePA
 {
     class ActionActivate : KeyAction, Activable
     {
+        public ActionActivate(double x, double y, double w, double h) : base(x, y, w, h)
+        {
+
+        }
     }
 }
