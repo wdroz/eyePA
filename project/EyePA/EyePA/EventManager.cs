@@ -24,12 +24,12 @@ namespace EyePA
         
         public void newQuery(double x, double y)
         {
-            //System.Console.WriteLine("X : " + x + "\tY : " + y);
+            System.Console.WriteLine("X : " + x + "\tY : " + y);
             foreach(KeyAction ka in this.myKeyActions)
             {
                 if(ka.isForMe(x,y))
                 {
-                    System.Console.WriteLine("!!!!!! OBJET TROUVE !!!!!!!!!!");
+                    //System.Console.WriteLine("!!!!!! OBJET TROUVE !!!!!!!!!!");
                 }
             }
         }    

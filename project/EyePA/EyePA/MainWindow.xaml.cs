@@ -35,10 +35,9 @@ namespace EyePA
 
         public void formInit()
         {
+            this.ResizeMode = ResizeMode.NoResize;
             Config config = Config.getInstance();
             folder = config.DefaultPath;
-            eventManager = new EventManager();
-            queryHandler = new QueryHandler(eventManager);
           
             updateFolder();
         }
@@ -86,5 +85,18 @@ namespace EyePA
         {
             this.Close();
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            eventManager = new EventManager();
+            queryHandler = new QueryHandler(eventManager);
+            Point absolutePos = GUIListView.PointToScreen(new System.Windows.Point(0, 0));
+            //var posMW = Application.Current.MainWindow.PointToScreen(new System.Windows.Point(0, 0));
+            //absolutePos = new System.Windows.Point(absolutePos.X - posMW.X, absolutePos.Y - posMW.Y);
+            //Point absolutePos = new Point(0, 0);
+            ActionWatch aw = new ActionWatch(absolutePos.X, absolutePos.Y, GUIListView.Width, GUIListView.Height, (Watchable)listView);
+            this.eventManager.addKeyAction(aw);
+        }
+
     }
 }

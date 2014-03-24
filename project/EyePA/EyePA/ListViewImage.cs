@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace EyePA
 {
-    class ListViewImage : ListView
+    class ListViewImage : ListView, Watchable
     {
         private System.Windows.Controls.ListView GUIListView;
         private int currentId;
@@ -43,6 +43,58 @@ namespace EyePA
             }
             return this.GUIListView;
         }
-        
+
+
+        public void startWatching(double x, double y)
+        {
+            //throw new NotImplementedException();
+           // System.Console.WriteLine("WE ARE LOOKING LIST VIEW");
+            try
+            {
+                double w = Config.getInstance().ImagesW;
+                double h = Config.getInstance().ImagesH;
+                int i = 0;
+                //TODO faire que ça marche...
+                //Point absolutePos = this.GUIListView.PointToScreen(new System.Windows.Point(0, 0));
+                Point absolutePos = new Point(200, 730);
+                foreach (ImageView mv in listView)
+                {
+                    //Point absolutePos = new Point(0, 0);
+                    //var posMW = Application.Current.MainWindow.PointToScreen(new System.Windows.Point(0, 0));
+                    //absolutePos = new System.Windows.Point(absolutePos.X - posMW.X, absolutePos.Y - posMW.Y);
+                    double newX = absolutePos.X + (i * w);
+                    double newY = absolutePos.Y + (i * h);
+                    if (x >= newX && x <= newX + w)
+                        if (y >= newY && y <= newY + h)
+                        {
+                            mv.startWatching(x, y);
+                        }
+                        else
+                        {
+                            mv.stopWatching();
+                        }
+                    else
+                    {
+                        mv.stopWatching();
+                    }
+                    i++;
+                }
+            }
+            catch(Exception e)
+            {
+                //TODO résoudre que ça vient ici...
+                System.Console.WriteLine(e);
+            }
+        }
+
+        public void stopWatching()
+        {
+            //throw new NotImplementedException();
+            //System.Console.WriteLine("WE ARE STOPPING LOOKING LIST VIEW");
+            foreach (ImageView mv in listView)
+            {
+                mv.stopWatching();
+            }
+        }
     }
 }

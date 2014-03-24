@@ -6,21 +6,24 @@ using System.Threading.Tasks;
 
 namespace EyePA
 {
-    class ActionWatch : KeyAction, Watchable
+    class ActionWatch : KeyAction
     {
 
-        public ActionWatch(double x, double y, double w, double h) : base(x,y,w,h)
-        {
+        private Watchable watchable;
 
-        }
-        public void startWatching(double x, double y)
+        public ActionWatch(double x, double y, double w, double h, Watchable watchable) : base(x,y,w,h)
         {
-            throw new NotImplementedException();
+            this.watchable = watchable;
         }
 
-        public void stopWatching()
+        public override void actionIfForMe()
         {
-            throw new NotImplementedException();
+            watchable.startWatching(lastX, lastY);
+        }
+
+        public override void actionIfNotForMe()
+        {
+            watchable.stopWatching();
         }
 
     }

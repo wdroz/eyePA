@@ -14,21 +14,41 @@ namespace EyePA
         private double w;
         private double h;
 
+        protected double lastX;
+        protected double lastY;
+
         public KeyAction(double x, double y, double w, double h)
         {
             this.x = x;
             this.y = y;
             this.w = w;
             this.h = h;
+
+            this.lastX = this.lastY = 0;
         }
 
         public bool isForMe(double x, double y)
         {
             if (x >= this.x && x <= this.x + this.w)
                 if (y >= this.y && y <= this.y + this.h)
+                {
+                    this.lastX = x;
+                    this.lastY = y;
+                    actionIfForMe();
                     return true;
-
+                }
+            actionIfNotForMe();
             return false;
+        }
+
+        public virtual void actionIfForMe()
+        {
+
+        }
+
+        public virtual void actionIfNotForMe()
+        {
+
         }
     }
 }

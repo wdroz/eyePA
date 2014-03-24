@@ -74,13 +74,26 @@ namespace EyePA
         public void startWatching(double x, double y)
         {
             isSelected = true;
-            this.image.BitmapEffect = createEffect();
+            this.image.Effect = new DropShadowEffect
+            {
+                Color = new Color { A = 255, R = 255, G = 255, B = 0 },
+                Direction = 320,
+                ShadowDepth = 25,
+                Opacity = 0.7
+            };
         }
 
         public void stopWatching()
         {
             isSelected = false;
-            this.image.BitmapEffect = null;
+            try
+            {
+                this.image.Effect = new DropShadowEffect
+                {
+
+                };
+            }
+            catch (Exception) { }
         }
     }
 }
