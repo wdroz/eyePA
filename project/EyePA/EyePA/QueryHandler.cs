@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Tobii.EyeX.Client;
 
 namespace EyePA
@@ -30,7 +32,10 @@ namespace EyePA
             double x, y, w, h;
             if (queryBounds.TryGetRectangularData(out x, out y, out w, out h))
             {
-                this.eventManager.newQuery(x, y);
+                //BeginInvoke(new Action<Rectangle>(HandleQueryOnUiThread), new Rectangle((int)x, (int)y, (int)w, (int)h));
+                //BeginInvoke(new Action<Rectangle>(this.eventManager.newQuery), new Rectangle(x,y,w,h)));
+                Application.Current.Dispatcher.Invoke(new Action(() => { this.eventManager.newQuery(new Rectangle((int)x,(int)y,(int)w,(int)h)); }));
+                //this.eventManager.newQuery(x, y);
             }
         }
     }

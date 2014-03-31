@@ -14,7 +14,7 @@ namespace EyePA
             return null;
         }
 
-        public void startWatching(double x, double y)
+        public void startWatching(System.Drawing.Rectangle rectangle)
         {
             throw new NotImplementedException();
         }

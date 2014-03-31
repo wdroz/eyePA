@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,12 +23,12 @@ namespace EyePA
             this.myKeyActions.Add(ka);
         }
         
-        public void newQuery(double x, double y)
+        public void newQuery(Rectangle rect)
         {
-            System.Console.WriteLine("X : " + x + "\tY : " + y);
+            //System.Console.WriteLine("X : " + x + "\tY : " + y);
             foreach(KeyAction ka in this.myKeyActions)
             {
-                if(ka.isForMe(x,y))
+                if(ka.isForMe(rect))
                 {
                     //System.Console.WriteLine("!!!!!! OBJET TROUVE !!!!!!!!!!");
                 }

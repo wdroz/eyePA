@@ -70,7 +70,7 @@ namespace EyePA
                 }
                 
                 ImageView imv = (ImageView)listView.getListView.ElementAt(m);
-                imv.startWatching(0, 0);
+                imv.startWatching(new System.Drawing.Rectangle(0,0,0,0));
                 bigImageView.setImageView(imv);
                 this.bigImageView.renderUI();
             }

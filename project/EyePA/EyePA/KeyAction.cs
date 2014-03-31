@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,8 @@ namespace EyePA
         private double w;
         private double h;
 
-        protected double lastX;
-        protected double lastY;
+        protected Rectangle rectangle;
+        protected Rectangle lastRect;
 
         public KeyAction(double x, double y, double w, double h)
         {
@@ -24,19 +25,21 @@ namespace EyePA
             this.w = w;
             this.h = h;
 
-            this.lastX = this.lastY = 0;
+            this.rectangle = new Rectangle((int)x, (int)y, (int)w, (int)h);
+            this.lastRect = new Rectangle((int)x, (int)y, (int)w, (int)h);
         }
 
-        public bool isForMe(double x, double y)
+        public bool isForMe(Rectangle rect)
         {
-            if (x >= this.x && x <= this.x + this.w)
-                if (y >= this.y && y <= this.y + this.h)
-                {
-                    this.lastX = x;
-                    this.lastY = y;
-                    actionIfForMe();
-                    return true;
-                }
+            if(rect.IntersectsWith(this.rectangle))
+            {
+                this.lastRect.X = rect.X;
+                this.lastRect.Y = rect.Y;
+                this.lastRect.Width = rect.Width;
+                this.lastRect.Height = rect.Height;
+                actionIfForMe();
+                return true;
+            }
             actionIfNotForMe();
             return false;
         }

@@ -45,34 +45,37 @@ namespace EyePA
         }
 
 
-        public void startWatching(double x, double y)
+        public void startWatching(System.Drawing.Rectangle rectangle)
         {
             //throw new NotImplementedException();
            // System.Console.WriteLine("WE ARE LOOKING LIST VIEW");
+            double newX = 0;
+            double newY = 0;
             try
             {
                 double w = Config.getInstance().ImagesW;
                 double h = Config.getInstance().ImagesH;
                 int i = 0;
+                System.Drawing.Rectangle imageRect = new System.Drawing.Rectangle(0,0,0,0);
                 //TODO faire que ça marche...
-                //Point absolutePos = this.GUIListView.PointToScreen(new System.Windows.Point(0, 0));
-                Point absolutePos = new Point(200, 730);
+                Point absolutePos = this.GUIListView.PointToScreen(new System.Windows.Point(0, 0));
+                //Point absolutePos = new Point(200, 730);
                 foreach (ImageView mv in listView)
                 {
                     //Point absolutePos = new Point(0, 0);
                     //var posMW = Application.Current.MainWindow.PointToScreen(new System.Windows.Point(0, 0));
-                    //absolutePos = new System.Windows.Point(absolutePos.X - posMW.X, absolutePos.Y - posMW.Y);
-                    double newX = absolutePos.X + (i * w);
-                    double newY = absolutePos.Y + (i * h);
-                    if (x >= newX && x <= newX + w)
-                        if (y >= newY && y <= newY + h)
-                        {
-                            mv.startWatching(x, y);
-                        }
-                        else
-                        {
-                            mv.stopWatching();
-                        }
+                   // absolutePos = new System.Windows.Point(absolutePos.X - posMW.X, absolutePos.Y - posMW.Y);
+                    absolutePos = mv.Image.PointToScreen(new System.Windows.Point(0, 0));
+                    imageRect.X = (int)absolutePos.X;
+                    imageRect.Y = (int)absolutePos.Y;
+                    imageRect.Width = (int)mv.Image.Width;
+                    imageRect.Height = (int)mv.Image.Height;
+                    newX = absolutePos.X; //+ (i * w);
+                    newY = absolutePos.Y; //+ (i * h);
+                    if(imageRect.IntersectsWith(rectangle))
+                    {
+                        mv.startWatching(rectangle);
+                    }
                     else
                     {
                         mv.stopWatching();

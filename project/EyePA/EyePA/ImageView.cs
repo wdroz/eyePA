@@ -63,6 +63,7 @@ namespace EyePA
         {
             this.image.Width = Config.getInstance().ImagesW;
             this.image.Height = Config.getInstance().ImagesH;
+            this.image.Margin = new System.Windows.Thickness(40,0,40,0);
             return this.image;
         }
 
@@ -71,7 +72,7 @@ namespace EyePA
             img.Source = image.Source;
         }
 
-        public void startWatching(double x, double y)
+        public void startWatching(System.Drawing.Rectangle rectangle)
         {
             isSelected = true;
             this.image.Effect = new DropShadowEffect

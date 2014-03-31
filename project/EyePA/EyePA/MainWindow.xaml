@@ -6,7 +6,7 @@
         <ListView x:Name="GUIListView" HorizontalAlignment="Left" Height="200" Margin="64,567,0,0" VerticalAlignment="Top" Width="1589" SelectionChanged="GUIListView_SelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"></StackPanel>
+                    <StackPanel Orientation="Horizontal" ></StackPanel>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
         </ListView>
