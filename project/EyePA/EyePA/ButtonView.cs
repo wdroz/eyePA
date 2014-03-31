@@ -4,29 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace EyePA
 {
-    public class ButtonView : View, Activable, Watchable
+    public abstract class ButtonView : View, Activable, Watchable
     {
+
+        private Button btn;
+
+        public ButtonView(Button btn)
+        {
+            this.btn = btn;
+        }
+
         public override FrameworkElement renderUI()
         {
             return null;
         }
 
-        public void startWatching(System.Drawing.Rectangle rectangle)
+        public virtual void startWatching(System.Drawing.Rectangle rectangle)
         {
-            throw new NotImplementedException();
+
+            this.btn.Background = Brushes.Orange;
         }
 
-        public void stopWatching()
+        public virtual void stopWatching()
         {
-            throw new NotImplementedException();
+            this.btn.Background = Brushes.LightGray;
         }
 
-        public void addKey(System.Windows.Input.KeyEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void addKey(System.Windows.Input.KeyEventArgs e);
     }
 }

@@ -113,6 +113,18 @@ namespace EyePA
 
             ActionActivate aa = new ActionActivate(absolutePos.X, absolutePos.Y, GUIListView.Width, GUIListView.Height, (Activable)listView);
             this.eventManager.addActivableKey(aa);
+
+            ButtonQuit bq = new ButtonQuit(GUIBtnQuit);
+
+            absolutePos = GUIBtnQuit.PointToScreen(new System.Windows.Point(0, 0));
+            ActionActivate aq = new ActionActivate(absolutePos.X, absolutePos.Y, GUIBtnQuit.Width, GUIBtnQuit.Height, (Activable)bq);
+            
+            this.eventManager.addActivableKey(aq);
+
+            ActionWatch awq = new ActionWatch(absolutePos.X, absolutePos.Y, GUIBtnQuit.Width, GUIBtnQuit.Height, (Watchable)bq);
+            this.eventManager.addKeyAction(awq);
+
+            
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
