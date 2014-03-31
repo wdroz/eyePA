@@ -60,5 +60,13 @@ namespace EyePA
         {
             lastActionActivable.addKey(e);
         }
+
+        public void reset()
+        {
+            this.lastSelectedKeyAction = null;
+            this.lastActionActivable = null;
+            this.myActionsActivable.Clear();
+            this.myKeyActions.Clear();
+        }
     }
 }

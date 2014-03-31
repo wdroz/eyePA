@@ -38,5 +38,12 @@ namespace EyePA
                 //this.eventManager.newQuery(x, y);
             }
         }
+
+        public void close()
+        {
+            _context.DisableConnection();
+            _context.Dispose();
+            _system.Dispose();
+        }
     }
 }

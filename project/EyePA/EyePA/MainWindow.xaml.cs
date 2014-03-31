@@ -55,12 +55,15 @@ namespace EyePA
             listView.renderUI();
             bigImageView.renderUI();
             this.GUIFolderPath.Content = folder;
+
         }
 
         private void GUIBtnBrowse_Click(object sender, RoutedEventArgs e)
         {
             this.folder = "C:\\imagesBig";
             this.updateFolder();
+            this.eventManager.reset();
+            this.register();
         }
 
         private void GUIListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -96,10 +99,15 @@ namespace EyePA
             eventManager = new EventManager();
             queryHandler = new QueryHandler(eventManager);
             keyHandler = new KeyHandler(eventManager);
+            
+            register();
+        }
+
+        private void register()
+        {
+
             Point absolutePos = GUIListView.PointToScreen(new System.Windows.Point(0, 0));
-            //var posMW = Application.Current.MainWindow.PointToScreen(new System.Windows.Point(0, 0));
-            //absolutePos = new System.Windows.Point(absolutePos.X - posMW.X, absolutePos.Y - posMW.Y);
-            //Point absolutePos = new Point(0, 0);
+
             ActionWatch aw = new ActionWatch(absolutePos.X, absolutePos.Y, GUIListView.Width, GUIListView.Height, (Watchable)listView);
             this.eventManager.addKeyAction(aw);
 
