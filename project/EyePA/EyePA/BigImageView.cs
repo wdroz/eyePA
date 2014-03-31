@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace EyePA
 {
-    class BigImageView : View, Scrollable, Zoomable
+    public class BigImageView : View, Scrollable, Zoomable
     {
 
         private ImageView imageView;
@@ -24,6 +24,12 @@ namespace EyePA
         {
             this.imageView = imageView;
             this.canvas = cv;
+        }
+
+        public ImageView ImageView
+        {
+            get { return imageView; }
+            set { this.imageView = value; }
         }
 
         public override FrameworkElement renderUI()

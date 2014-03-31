@@ -10,25 +10,26 @@ using System.Windows.Media.Effects;
 
 namespace EyePA
 {
-    public class ImageView : View, Watchable
+    public class ImageView : View, Watchable, Activable
     {
 
         private Image image;
         private String url;
         private bool isSelected;
+        private BigImageView bigImageView;
 
         public Image Image
         {
             get { return image; }
         }
 
-        public ImageView(String url)
+        public ImageView(String url, BigImageView bigImageView)
         {
             this.url = url;
             this.image = new Image();
             this.image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(url));
             this.isSelected = false;
-            
+            this.bigImageView = bigImageView;
         }
 
         public DropShadowBitmapEffect createEffect()
@@ -63,7 +64,7 @@ namespace EyePA
         {
             this.image.Width = Config.getInstance().ImagesW;
             this.image.Height = Config.getInstance().ImagesH;
-            this.image.Margin = new System.Windows.Thickness(40,0,40,0);
+            this.image.Margin = new System.Windows.Thickness(10,0,10,0);
             return this.image;
         }
 
@@ -95,6 +96,17 @@ namespace EyePA
                 };
             }
             catch (Exception) { }
+        }
+
+        public void addKey(System.Windows.Input.KeyEventArgs e)
+        {
+            System.Console.WriteLine("ImageView add key");
+
+            if(e.Key == System.Windows.Input.Key.A)
+            {
+                this.bigImageView.setImageView(this);
+                this.bigImageView.renderUI();
+            }
         }
     }
 }

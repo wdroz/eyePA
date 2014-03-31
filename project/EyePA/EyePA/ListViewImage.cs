@@ -8,17 +8,21 @@ using System.Windows;
 
 namespace EyePA
 {
-    class ListViewImage : ListView, Watchable
+    class ListViewImage : ListView, Watchable, Activable
     {
         private System.Windows.Controls.ListView GUIListView;
         private int currentId;
         private int nbFiles;
         private String filePath;
+        private BigImageView bigImageView;
+        private ImageView lastSelectedImage;
 
-        public ListViewImage(String filePath, System.Windows.Controls.ListView listView1) : base()
+        public ListViewImage(String filePath, System.Windows.Controls.ListView listView1, BigImageView bigImageView) : base()
         {
             this.GUIListView = listView1;
             this.filePath = filePath;
+            this.bigImageView = bigImageView;
+            this.lastSelectedImage = null;
             currentId = 1;
             updateListView();
         }
@@ -29,7 +33,7 @@ namespace EyePA
            foreach(String file in files)
            {
                System.Console.WriteLine("file : " + file);
-               ImageView mv = new ImageView(file);
+               ImageView mv = new ImageView(file, bigImageView);
                this.addView(mv);
            }
         }
@@ -42,6 +46,12 @@ namespace EyePA
                 this.GUIListView.Items.Add(v.renderUI());
             }
             return this.GUIListView;
+        }
+
+        public BigImageView BigImageView
+        {
+            get { return this.bigImageView; }
+            set { this.bigImageView = value; }
         }
 
 
@@ -57,6 +67,8 @@ namespace EyePA
                 double h = Config.getInstance().ImagesH;
                 int i = 0;
                 System.Drawing.Rectangle imageRect = new System.Drawing.Rectangle(0,0,0,0);
+                System.Drawing.Rectangle intersectionRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+                ImageView selectedImage = null;
                 //TODO faire que ça marche...
                 Point absolutePos = this.GUIListView.PointToScreen(new System.Windows.Point(0, 0));
                 //Point absolutePos = new Point(200, 730);
@@ -74,13 +86,43 @@ namespace EyePA
                     newY = absolutePos.Y; //+ (i * h);
                     if(imageRect.IntersectsWith(rectangle))
                     {
-                        mv.startWatching(rectangle);
+                        //mv.startWatching(rectangle);
+                        System.Drawing.Rectangle r1 = new System.Drawing.Rectangle(imageRect.X, imageRect.Y, imageRect.Width, imageRect.Height);
+
+                        r1.Intersect(rectangle);
+                        if(r1.Width*r1.Height > intersectionRect.Width*intersectionRect.Height)
+                        {
+                            intersectionRect.X = imageRect.X;
+                            intersectionRect.Y = imageRect.Y;
+                            intersectionRect.Width = imageRect.Width;
+                            intersectionRect.Height = imageRect.Height;
+                            selectedImage = mv;
+                        }
+
+                        
                     }
                     else
                     {
                         mv.stopWatching();
                     }
                     i++;
+                }
+                if (selectedImage != null)
+                {
+                    foreach (ImageView mv in listView)
+                    {
+                        if (mv.Equals(selectedImage))
+                        {
+                            this.lastSelectedImage = mv;
+                            mv.startWatching(rectangle);
+                            //Si on veut activer le changement instant
+                            //this.GUIListView.SelectedItem = mv.Image;
+                        }
+                        else
+                        {
+                            mv.stopWatching();
+                        }
+                    }
                 }
             }
             catch(Exception e)
@@ -97,6 +139,17 @@ namespace EyePA
             foreach (ImageView mv in listView)
             {
                 mv.stopWatching();
+            }
+        }
+
+        public void addKey(System.Windows.Input.KeyEventArgs e)
+        {
+
+            System.Console.WriteLine("ListViewImage add key");
+
+            if(lastSelectedImage != null)
+            {
+                lastSelectedImage.addKey(e);
             }
         }
     }

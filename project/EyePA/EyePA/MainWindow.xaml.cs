@@ -22,10 +22,11 @@ namespace EyePA
     {
 
         private String folder;
-        private ListView listView;
+        private ListViewImage listView;
         private BigImageView bigImageView;
         private EventManager eventManager;
         private QueryHandler queryHandler;
+        private KeyHandler keyHandler;
         public MainWindow()
         {
             InitializeComponent();
@@ -44,9 +45,13 @@ namespace EyePA
 
         public void updateFolder()
         {
-            this.listView = new ListViewImage(folder, this.GUIListView);
+            this.bigImageView = new BigImageView(null, GUIBigPicture);
+
+            this.listView = new ListViewImage(folder, this.GUIListView, this.bigImageView);
             ImageView iv = (ImageView)listView.getListView.ElementAt(0);
-            this.bigImageView = new BigImageView(iv, GUIBigPicture);
+
+            this.bigImageView.ImageView = iv;
+
             listView.renderUI();
             bigImageView.renderUI();
             this.GUIFolderPath.Content = folder;
@@ -90,12 +95,21 @@ namespace EyePA
         {
             eventManager = new EventManager();
             queryHandler = new QueryHandler(eventManager);
+            keyHandler = new KeyHandler(eventManager);
             Point absolutePos = GUIListView.PointToScreen(new System.Windows.Point(0, 0));
             //var posMW = Application.Current.MainWindow.PointToScreen(new System.Windows.Point(0, 0));
             //absolutePos = new System.Windows.Point(absolutePos.X - posMW.X, absolutePos.Y - posMW.Y);
             //Point absolutePos = new Point(0, 0);
             ActionWatch aw = new ActionWatch(absolutePos.X, absolutePos.Y, GUIListView.Width, GUIListView.Height, (Watchable)listView);
             this.eventManager.addKeyAction(aw);
+
+            ActionActivate aa = new ActionActivate(absolutePos.X, absolutePos.Y, GUIListView.Width, GUIListView.Height, (Activable)listView);
+            this.eventManager.addActivableKey(aa);
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            keyHandler.addKey(e);
         }
 
     }

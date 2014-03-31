@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace EyePA
 {
-    class ButtonView : View, Activable, Watchable
+    public class ButtonView : View, Activable, Watchable
     {
         public override FrameworkElement renderUI()
         {
@@ -20,6 +20,11 @@ namespace EyePA
         }
 
         public void stopWatching()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void addKey(System.Windows.Input.KeyEventArgs e)
         {
             throw new NotImplementedException();
         }

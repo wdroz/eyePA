@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace EyePA
 {
@@ -50,6 +51,11 @@ namespace EyePA
         }
 
         public virtual void actionIfNotForMe()
+        {
+
+        }
+
+        public virtual void addKey(KeyEventArgs e)
         {
 
         }
