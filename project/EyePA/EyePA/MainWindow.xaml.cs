@@ -60,7 +60,7 @@ namespace EyePA
 
         private void GUIBtnBrowse_Click(object sender, RoutedEventArgs e)
         {
-            this.folder = "C:\\imagesBig";
+            this.folder = "C:\\images3";
             this.updateFolder();
             this.eventManager.reset();
             this.register();
@@ -105,26 +105,37 @@ namespace EyePA
 
         private void register()
         {
+            //TODO encapsuler les actions dans les interfaces
 
-            Point absolutePos = GUIListView.PointToScreen(new System.Windows.Point(0, 0));
+            registerWatchable(listView, GUIListView);
+            registerActivable(listView, GUIListView);
 
-            ActionWatch aw = new ActionWatch(absolutePos.X, absolutePos.Y, GUIListView.Width, GUIListView.Height, (Watchable)listView);
-            this.eventManager.addKeyAction(aw);
-
-            ActionActivate aa = new ActionActivate(absolutePos.X, absolutePos.Y, GUIListView.Width, GUIListView.Height, (Activable)listView);
-            this.eventManager.addActivableKey(aa);
 
             ButtonQuit bq = new ButtonQuit(GUIBtnQuit);
+            registerWatchable(bq, GUIBtnQuit);
+            registerActivable(bq, GUIBtnQuit);
 
-            absolutePos = GUIBtnQuit.PointToScreen(new System.Windows.Point(0, 0));
-            ActionActivate aq = new ActionActivate(absolutePos.X, absolutePos.Y, GUIBtnQuit.Width, GUIBtnQuit.Height, (Activable)bq);
-            
-            this.eventManager.addActivableKey(aq);
+            ButtonRight br = new ButtonRight(GUIBtnRight);
+            registerWatchable(br, GUIBtnRight);
+            registerActivable(br, GUIBtnRight);
 
-            ActionWatch awq = new ActionWatch(absolutePos.X, absolutePos.Y, GUIBtnQuit.Width, GUIBtnQuit.Height, (Watchable)bq);
-            this.eventManager.addKeyAction(awq);
+            ButtonLeft bl = new ButtonLeft(GUIBtnLeft);
+            registerWatchable(bl, GUIBtnLeft);
+            registerActivable(bl, GUIBtnLeft);
+        }
 
-            
+        private void registerWatchable(Watchable w, FrameworkElement fe)
+        {
+            Point absolutePos = fe.PointToScreen(new System.Windows.Point(0, 0));
+            ActionWatch aw = new ActionWatch(absolutePos.X, absolutePos.Y, fe.Width, fe.Height, w);
+            this.eventManager.addKeyAction(aw);
+        }
+
+        private void registerActivable(Activable a, FrameworkElement fe)
+        {
+            Point absolutePos = fe.PointToScreen(new System.Windows.Point(0, 0));
+            ActionActivate aa = new ActionActivate(absolutePos.X, absolutePos.Y, fe.Width, fe.Height, a);
+            this.eventManager.addActivableKey(aa);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

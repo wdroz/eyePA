@@ -64,7 +64,9 @@
     <Compile Include="Activable.cs" />
     <Compile Include="BigImageView.cs" />
     <Compile Include="BtnCanvasTest.cs" />
+    <Compile Include="ButtonLeft.cs" />
     <Compile Include="ButtonQuit.cs" />
+    <Compile Include="ButtonRight.cs" />
     <Compile Include="ButtonView.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EventManager.cs" />

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="851.4" Width="1701" SizeChanged="Window_SizeChanged" KeyDown="Window_KeyDown">
     <Grid>
-        <ListView x:Name="GUIListView" HorizontalAlignment="Left" Height="200" Margin="64,567,0,0" VerticalAlignment="Top" Width="1589" SelectionChanged="GUIListView_SelectionChanged">
+        <ListView x:Name="GUIListView" HorizontalAlignment="Left" Height="200" Margin="191,567,0,0" VerticalAlignment="Top" Width="1310" SelectionChanged="GUIListView_SelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" ></StackPanel>
@@ -15,6 +15,8 @@
         <Button x:Name="GUIBtnBrowse" Content="Change Folder" HorizontalAlignment="Left" Height="118" Margin="1443,187,0,0" VerticalAlignment="Top" Width="210" Click="GUIBtnBrowse_Click"/>
         <Canvas x:Name="GUIBigPicture" HorizontalAlignment="Left" Height="490" Margin="64,47,0,0" VerticalAlignment="Top" Width="922"/>
         <Image x:Name="GUIImageTest" HorizontalAlignment="Left" Height="133" Margin="952,36,0,0" VerticalAlignment="Top" Width="143"/>
+        <Button x:Name="GUIBtnLeft" Content="Left" HorizontalAlignment="Left" Margin="19,567,0,0" VerticalAlignment="Top" Width="133" Height="200"/>
+        <Button x:Name="GUIBtnRight" Content="Right" HorizontalAlignment="Left" Margin="1533,567,0,0" VerticalAlignment="Top" Width="133" Height="200"/>
 
     </Grid>
 </Window>
