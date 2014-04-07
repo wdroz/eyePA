@@ -13,7 +13,11 @@
         <Label x:Name="GUIFolderPath" Content="chemin" HorizontalAlignment="Left" Margin="64,784,0,0" VerticalAlignment="Top" Width="88"/>
         <Button x:Name="GUIBtnQuit" Content="Quit" HorizontalAlignment="Left" Height="133" Margin="1443,25,0,0" VerticalAlignment="Top" Width="210" Click="GUIBtnQuit_Click"/>
         <Button x:Name="GUIBtnBrowse" Content="Change Folder" HorizontalAlignment="Left" Height="118" Margin="1443,187,0,0" VerticalAlignment="Top" Width="210" Click="GUIBtnBrowse_Click"/>
-        <Canvas x:Name="GUIBigPicture" HorizontalAlignment="Left" Height="490" Margin="64,47,0,0" VerticalAlignment="Top" Width="922"/>
+        <Canvas x:Name="GUIBigPicture" HorizontalAlignment="Left" Height="490" Margin="64,47,0,0" VerticalAlignment="Top" Width="922" ClipToBounds="True">
+            <Canvas.Clip>
+                <RectangleGeometry Rect="0,0,922,490" />
+            </Canvas.Clip>
+        </Canvas>
         <Image x:Name="GUIImageTest" HorizontalAlignment="Left" Height="133" Margin="952,36,0,0" VerticalAlignment="Top" Width="143"/>
         <Button x:Name="GUIBtnLeft" Content="Left" HorizontalAlignment="Left" Margin="19,567,0,0" VerticalAlignment="Top" Width="133" Height="200"/>
         <Button x:Name="GUIBtnRight" Content="Right" HorizontalAlignment="Left" Margin="1533,567,0,0" VerticalAlignment="Top" Width="133" Height="200"/>

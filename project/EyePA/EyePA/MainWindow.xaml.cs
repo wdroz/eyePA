@@ -60,7 +60,7 @@ namespace EyePA
 
         private void GUIBtnBrowse_Click(object sender, RoutedEventArgs e)
         {
-            this.folder = "C:\\images3";
+            this.folder = "C:\\imagesBig";
             this.updateFolder();
             this.eventManager.reset();
             this.register();
