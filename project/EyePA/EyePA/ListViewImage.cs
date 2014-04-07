@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace EyePA
 {
-    class ListViewImage : ListView, Watchable, Activable
+    public class ListViewImage : ListView, Watchable, Activable
     {
         private System.Windows.Controls.ListView GUIListView;
         private int currentId;
@@ -25,6 +25,24 @@ namespace EyePA
             this.lastSelectedImage = null;
             currentId = 1;
             updateListView();
+        }
+
+        public void scrollLeft()
+        {
+            if (currentId > 0)
+            {
+                currentId--;
+            }
+            GUIListView.ScrollIntoView(listView.ElementAt(currentId).renderUI());
+        }
+
+        public void scrollRight()
+        {
+            if(currentId < (listView.Count-1))
+            {
+                currentId++;
+            }
+            GUIListView.ScrollIntoView(listView.ElementAt(currentId).renderUI());
         }
 
         public void updateListView()
@@ -97,6 +115,7 @@ namespace EyePA
                             intersectionRect.Width = imageRect.Width;
                             intersectionRect.Height = imageRect.Height;
                             selectedImage = mv;
+                            currentId = i;
                         }
 
                         

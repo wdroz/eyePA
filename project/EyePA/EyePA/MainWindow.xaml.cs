@@ -115,13 +115,15 @@ namespace EyePA
             registerWatchable(bq, GUIBtnQuit);
             registerActivable(bq, GUIBtnQuit);
 
-            ButtonRight br = new ButtonRight(GUIBtnRight);
+            ButtonRight br = new ButtonRight(GUIBtnRight, listView);
             registerWatchable(br, GUIBtnRight);
             registerActivable(br, GUIBtnRight);
 
-            ButtonLeft bl = new ButtonLeft(GUIBtnLeft);
+            ButtonLeft bl = new ButtonLeft(GUIBtnLeft, listView);
             registerWatchable(bl, GUIBtnLeft);
             registerActivable(bl, GUIBtnLeft);
+
+            registerZoomable(bigImageView, GUIBigPicture);
         }
 
         private void registerWatchable(Watchable w, FrameworkElement fe)
@@ -136,6 +138,13 @@ namespace EyePA
             Point absolutePos = fe.PointToScreen(new System.Windows.Point(0, 0));
             ActionActivate aa = new ActionActivate(absolutePos.X, absolutePos.Y, fe.Width, fe.Height, a);
             this.eventManager.addActivableKey(aa);
+        }
+
+        private void registerZoomable(Zoomable z, FrameworkElement fe)
+        {
+            Point absolutePos = fe.PointToScreen(new System.Windows.Point(0, 0));
+            ActionZoom az = new ActionZoom(absolutePos.X, absolutePos.Y, fe.Width, fe.Height, z);
+            this.eventManager.setZoomableKey(az);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

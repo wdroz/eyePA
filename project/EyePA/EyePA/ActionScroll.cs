@@ -8,9 +8,12 @@ namespace EyePA
 {
     class ActionScroll : KeyAction, Scrollable
     {
-        public ActionScroll(double x, double y, double w, double h) : base(x, y, w, h)
-        {
 
+        private Scrollable scrollable;
+
+        public ActionScroll(double x, double y, double w, double h, Scrollable scrollable) : base(x, y, w, h)
+        {
+            this.scrollable = scrollable;
         }
     }
 }

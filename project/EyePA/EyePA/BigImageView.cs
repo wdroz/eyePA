@@ -39,5 +39,23 @@ namespace EyePA
             canvas.Background = ib;
             return canvas;
         }
+
+        public void zoomAt(System.Drawing.Rectangle rect)
+        {
+            //System.Console.WriteLine("ZOOM");
+            Point p = new Point(rect.X, rect.Y);
+            Point absolutePos = canvas.PointToScreen(new System.Windows.Point(0, 0));
+
+            Matrix m = canvas.RenderTransform.Value;
+            m.OffsetX = absolutePos.X + (p.X - 0);
+            m.OffsetY = absolutePos.Y + (p.Y - 0);
+
+            canvas.RenderTransform = new MatrixTransform(m);
+        }
+
+        public void unzoomA()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

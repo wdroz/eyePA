@@ -10,13 +10,16 @@ namespace EyePA
 {
     public class ButtonLeft : ButtonView
     {
-        public ButtonLeft(Button btn) : base(btn) { }
+
+        private ListViewImage listViewImage;
+
+        public ButtonLeft(Button btn, ListViewImage lv) : base(btn) 
+        {
+            this.listViewImage = lv;
+        }
         public override void addKey(System.Windows.Input.KeyEventArgs e)
         {
-            if(e.Key == System.Windows.Input.Key.A)
-            {
-                Application.Current.Shutdown();
-            }
+            this.listViewImage.scrollLeft();
         }
     }
 }

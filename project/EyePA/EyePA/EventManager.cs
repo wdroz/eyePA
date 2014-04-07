@@ -16,6 +16,8 @@ namespace EyePA
         private List<ActionActivate> myActionsActivable;
         private KeyAction lastSelectedKeyAction;
         private ActionActivate lastActionActivable;
+        private ActionZoom lastActionZoom;
+        private Rectangle lastRectangle;
 
         public EventManager()
         {
@@ -23,6 +25,8 @@ namespace EyePA
             myActionsActivable = new List<ActionActivate>();
             lastSelectedKeyAction = null;
             lastActionActivable = null;
+            lastActionZoom = null;
+            lastRectangle = new Rectangle();
         }
 
         public void addKeyAction(KeyAction ka)
@@ -34,9 +38,15 @@ namespace EyePA
         {
             this.myActionsActivable.Add(aa);
         }
+
+        public void setZoomableKey(ActionZoom az)
+        {
+            this.lastActionZoom = az;
+        }
         
         public void newQuery(Rectangle rect)
         {
+            lastRectangle = rect;
             //System.Console.WriteLine("X : " + x + "\tY : " + y);
             foreach(KeyAction ka in this.myKeyActions)
             {
@@ -58,7 +68,18 @@ namespace EyePA
  
         public void newKey(KeyEventArgs e)
         {
-            lastActionActivable.addKey(e);
+            if (e.Key == System.Windows.Input.Key.A)
+            {
+                lastActionActivable.addKey(e);
+            }
+            else if(e.Key == System.Windows.Input.Key.W)
+            {
+                if(lastActionZoom != null)
+                {
+                    lastActionZoom.zoomAt(lastRectangle);
+                }
+            }
+            
         }
 
         public void reset()
