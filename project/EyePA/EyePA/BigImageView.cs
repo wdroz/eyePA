@@ -15,6 +15,7 @@ namespace EyePA
 
         private ImageView imageView;
         private Canvas canvas;
+        private Point lastPoint;
 
         public void setImageView(ImageView imv)
         {
@@ -25,6 +26,8 @@ namespace EyePA
         {
             this.imageView = imageView;
             this.canvas = cv;
+            this.lastPoint = new Point();
+            this.lastPoint.X = 99999;
         }
 
         public ImageView ImageView
@@ -43,44 +46,35 @@ namespace EyePA
 
         public void zoomAt(System.Drawing.Rectangle rect)
         {
-            //System.Console.WriteLine("ZOOM");
-
-            //start = canvas.PointToScreen(new System.Windows.Point(0, 0));
-            //origin.X = canvas.RenderTransform.Value.OffsetX;
-            //origin.Y = canvas.RenderTransform.Value.OffsetY;
-
-            //Point p = new Point(rect.X, rect.Y);
 
             Matrix m = canvas.Background.Transform.Value;
-            //m.OffsetX = origin.X + (p.X - start.X);
-            //m.OffsetY = origin.Y + (p.Y - start.Y);
 
-            //canvas.RenderTransform = new MatrixTransform(m);
-
-            Point p = new Point(rect.X, rect.Y);
-            //Point absolutePos = canvas.PointToScreen(new System.Windows.Point(0, 0));
-            //Matrix m = canvas.RenderTransform.Value;
-            //m.OffsetX = absolutePos.X + (p.X - 1000);
-            //m.OffsetY = absolutePos.Y + (p.Y - 1000);
-
-            //canvas.RenderTransform = new MatrixTransform(m);
+            Point p = new Point(rect.X + rect.Width/2, rect.Y + rect.Height/2);
+            lastPoint = p;
+           
 
             m = canvas.Background.Transform.Value;
             m.ScaleAtPrepend(1.1, 1.1, p.X, p.Y);
 
-
             canvas.Background.Transform = new MatrixTransform(m);
-
-            
-
-            //canvas.Clip = new RectangleGeometry(new Rect(0,0,922,490));
-
 
         }
 
         public void unzoomA()
         {
-            throw new NotImplementedException();
+
+            if (lastPoint.X != 99999)
+            {
+                Matrix m = canvas.Background.Transform.Value;
+
+
+
+                m = canvas.Background.Transform.Value;
+                m.ScaleAtPrepend(1 / 1.1, 1 / 1.1, lastPoint.X, lastPoint.Y);
+
+
+                canvas.Background.Transform = new MatrixTransform(m);
+            }
         }
     }
 }

@@ -22,7 +22,7 @@ namespace EyePA
 
         public void unzoomA()
         {
-            throw new NotImplementedException();
+            this.zoomable.unzoomA();
         }
     }
 }

@@ -60,6 +60,11 @@ namespace EyePA
 
         private void GUIBtnBrowse_Click(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        public void changeDirectory()
+        {
             this.folder = "C:\\imagesBig";
             this.updateFolder();
             this.eventManager.reset();
@@ -122,6 +127,11 @@ namespace EyePA
             ButtonLeft bl = new ButtonLeft(GUIBtnLeft, listView);
             registerWatchable(bl, GUIBtnLeft);
             registerActivable(bl, GUIBtnLeft);
+
+
+            ButtonChangeDirectory bcd = new ButtonChangeDirectory(GUIBtnBrowse, this);
+            registerWatchable(bcd, GUIBtnBrowse);
+            registerActivable(bcd, GUIBtnBrowse);
 
             registerZoomable(bigImageView, GUIBigPicture);
         }

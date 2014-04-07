@@ -79,6 +79,13 @@ namespace EyePA
                     lastActionZoom.zoomAt(lastRectangle);
                 }
             }
+            else if (e.Key == System.Windows.Input.Key.S)
+            {
+                if (lastActionZoom != null)
+                {
+                    lastActionZoom.unzoomA();
+                }
+            }
             
         }
 
