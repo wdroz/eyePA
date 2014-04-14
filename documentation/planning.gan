@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="eyePA" company="HES-SI" webLink="http://" view-date="2014-02-23" view-index="0" gantt-divider-location="388" resource-divider-location="300" version="2.0" locale="fr">
+<?xml version="1.0" encoding="UTF-8"?><project name="eyePA" company="HES-SI" webLink="http://" view-date="2014-02-21" view-index="0" gantt-divider-location="388" resource-divider-location="300" version="2.0" locale="fr">
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Nom" width="64" order="0"/>
@@ -54,32 +54,30 @@
         <task id="6" name="Conception" meeting="false" start="2014-03-03" duration="1" complete="0" expand="true">
             <depend id="3" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="3" name="première itération" meeting="false" start="2014-03-10" duration="3" complete="0" expand="true">
+        <task id="3" name="première itération" meeting="false" start="2014-03-10" duration="4" complete="0" expand="true">
             <depend id="10" type="2" difference="0" hardness="Strong"/>
             <task id="7" name="création du plan de test" meeting="false" start="2014-03-10" duration="1" complete="0" expand="true">
                 <task id="49" name="outils utilisés" meeting="false" start="2014-03-10" duration="1" complete="0" expand="true"/>
                 <task id="51" name="scénario testé" meeting="false" start="2014-03-10" duration="1" complete="0" expand="true"/>
             </task>
             <task id="8" name="créations des mocks" meeting="false" start="2014-03-10" duration="1" complete="0" expand="true"/>
-            <task id="9" name="navigation dans des dossiers" meeting="false" start="2014-03-10" duration="2" complete="0" expand="true">
+            <task id="9" name="navigation dans le dossier" meeting="false" start="2014-03-10" duration="2" complete="0" expand="true">
                 <depend id="33" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="33" name="afficher les images en grand" meeting="false" start="2014-03-24" duration="1" complete="0" expand="true"/>
+            <task id="33" name="afficher les images en grand" meeting="false" start="2014-03-24" duration="2" complete="0" expand="true"/>
         </task>
-        <task id="10" name="release du prototype v1" color="#6699ff" meeting="true" start="2014-03-31" duration="0" complete="0" expand="true">
+        <task id="10" name="release du prototype v1" color="#6699ff" meeting="true" start="2014-04-07" duration="0" complete="0" expand="true">
             <depend id="12" type="2" difference="0" hardness="Strong"/>
             <depend id="22" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="22" name="mise à jour du cahier des charges" meeting="false" start="2014-03-31" duration="1" complete="0" expand="true"/>
-        <task id="12" name="mise à jour de la planification" meeting="false" start="2014-03-31" duration="1" complete="0" expand="true">
+        <task id="22" name="mise à jour du cahier des charges" meeting="false" start="2014-04-07" duration="1" complete="0" expand="true"/>
+        <task id="12" name="mise à jour de la planification" meeting="false" start="2014-04-07" duration="2" complete="0" expand="true">
             <depend id="15" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="15" name="seconde itération" meeting="false" start="2014-04-07" duration="3" complete="0" expand="true">
+        <task id="15" name="seconde itération" meeting="false" start="2014-04-21" duration="1" complete="0" expand="true">
             <depend id="18" type="2" difference="0" hardness="Strong"/>
-            <task id="16" name="sélection d'images" meeting="false" start="2014-04-07" duration="1" complete="0" expand="true">
-                <depend id="34" type="2" difference="0" hardness="Strong"/>
-            </task>
-            <task id="34" name="navigation avec tobii rex" meeting="false" start="2014-04-14" duration="2" complete="0" expand="true"/>
+            <task id="24" name="zoom" meeting="false" start="2014-04-21" duration="1" complete="0" expand="true"/>
+            <task id="46" name="scroll" color="#6699ff" meeting="false" start="2014-04-21" duration="1" complete="0" expand="true"/>
         </task>
         <task id="18" name="release du prototype v2" color="#6699ff" meeting="true" start="2014-04-28" duration="0" complete="0" expand="true">
             <depend id="19" type="2" difference="0" hardness="Strong"/>
@@ -91,17 +89,16 @@
         </task>
         <task id="23" name="itération final" meeting="false" start="2014-05-05" duration="4" complete="0" expand="true">
             <depend id="30" type="2" difference="0" hardness="Strong"/>
-            <task id="27" name="refactoring" meeting="false" start="2014-05-05" duration="1" complete="0" expand="true"/>
-            <task id="24" name="zoom" meeting="false" start="2014-05-05" duration="2" complete="0" expand="true">
-                <depend id="25" type="2" difference="0" hardness="Strong"/>
-                <depend id="46" type="2" difference="0" hardness="Strong"/>
+            <task id="16" name="sélection d'images" meeting="false" start="2014-05-05" duration="1" complete="0" expand="true">
+                <depend id="34" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="46" name="scroll" meeting="false" start="2014-05-19" duration="1" complete="0" expand="true"/>
-            <task id="25" name="valider tous les tests" meeting="false" start="2014-05-19" duration="1" complete="0" expand="true"/>
-            <task id="28" name="valider la documentation" meeting="false" start="2014-05-05" duration="4" complete="0" expand="true"/>
+            <task id="34" name="navigation avec tobii rex" meeting="false" start="2014-05-12" duration="2" complete="0" expand="true"/>
+            <task id="27" name="refactoring" color="#6699ff" meeting="false" start="2014-05-19" duration="1" complete="0" expand="true"/>
+            <task id="25" name="valider tous les tests" color="#6699ff" meeting="false" start="2014-05-19" duration="1" complete="0" expand="true"/>
+            <task id="28" name="valider la documentation" meeting="false" start="2014-05-26" duration="1" complete="0" expand="true"/>
         </task>
         <task id="30" name="release finale" color="#6699ff" meeting="true" start="2014-06-02" duration="0" complete="0" expand="true"/>
-        <task id="32" name="rapport" meeting="false" start="2014-03-24" duration="11" complete="0" expand="true"/>
+        <task id="32" name="rapport" meeting="false" start="2014-03-24" duration="10" complete="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
