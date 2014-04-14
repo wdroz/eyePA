@@ -26,6 +26,7 @@ namespace EyePA
             this.filePath = filePath;
             this.bigImageView = bigImageView;
             this.lastSelectedImage = null;
+            this.nbFiles = 0;
             currentId = 1;
             updateListView();
         }
@@ -58,7 +59,8 @@ namespace EyePA
                this.addView(mv);
            }
 
-           this.GUICurrentID.Text = currentId + "/" + files.Length;
+           this.nbFiles = files.Length;
+           this.GUICurrentID.Text = currentId + "/" + nbFiles;
 
         }
 
@@ -148,6 +150,7 @@ namespace EyePA
                             mv.stopWatching();
                         }
                     }
+                    this.GUICurrentID.Text = (currentId+1) + "/" + nbFiles;
                 }
             }
             catch(Exception e)
