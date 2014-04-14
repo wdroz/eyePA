@@ -15,7 +15,7 @@ namespace EyePA
 
         private ImageView imageView;
         private Canvas canvas;
-        private Point lastPoint;
+        private Nullable<Point> lastPoint;
 
         public void setImageView(ImageView imv)
         {
@@ -27,7 +27,7 @@ namespace EyePA
             this.imageView = imageView;
             this.canvas = cv;
             this.lastPoint = new Point();
-            this.lastPoint.X = 99999;
+            this.lastPoint = null;
         }
 
         public ImageView ImageView
@@ -63,14 +63,14 @@ namespace EyePA
         public void unzoomA()
         {
 
-            if (lastPoint.X != 99999)
+            if (lastPoint != null)
             {
                 Matrix m = canvas.Background.Transform.Value;
 
 
 
                 m = canvas.Background.Transform.Value;
-                m.ScaleAtPrepend(1 / 1.1, 1 / 1.1, lastPoint.X, lastPoint.Y);
+                m.ScaleAtPrepend(1 / 1.1, 1 / 1.1, lastPoint.Value.X, lastPoint.Value.Y);
 
 
                 canvas.Background.Transform = new MatrixTransform(m);
