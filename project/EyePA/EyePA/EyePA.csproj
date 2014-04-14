@@ -77,6 +77,7 @@
     <Compile Include="ListView.cs" />
     <Compile Include="ListViewImage.cs" />
     <Compile Include="QueryHandler.cs" />
+    <Compile Include="QueryHandlerAbstract.cs" />
     <Compile Include="Scrollable.cs" />
     <Compile Include="View.cs" />
     <Compile Include="Watchable.cs" />

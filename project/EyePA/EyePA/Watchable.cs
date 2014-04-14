@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EyePA
 {
-    interface Watchable
+    public interface Watchable
     {
         void startWatching(Rectangle rectangle);
         void stopWatching();

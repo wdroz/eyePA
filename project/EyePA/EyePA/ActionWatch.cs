@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EyePA
 {
-    class ActionWatch : KeyAction
+    public class ActionWatch : KeyAction
     {
 
         private Watchable watchable;

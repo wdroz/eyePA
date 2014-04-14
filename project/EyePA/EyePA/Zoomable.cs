@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EyePA
 {
-    interface Zoomable
+    public interface Zoomable
     {
         void zoomAt(Rectangle rect);
         void unzoomA();

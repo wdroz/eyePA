@@ -9,7 +9,7 @@ using Tobii.EyeX.Client;
 
 namespace EyePA
 {
-    class EventManager
+    public class EventManager
     {
 
         private List<KeyAction> myKeyActions;

@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace EyePA
 {
-    abstract class KeyAction
+    public abstract class KeyAction
     {
 
         private double x;

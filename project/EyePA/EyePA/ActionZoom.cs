@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyePA
 {
-    class ActionZoom : KeyAction, Zoomable
+    public class ActionZoom : KeyAction, Zoomable
     {
         private Zoomable zoomable;
 

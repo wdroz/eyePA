@@ -25,7 +25,7 @@ namespace EyePA
         private ListViewImage listView;
         private BigImageView bigImageView;
         private EventManager eventManager;
-        private QueryHandler queryHandler;
+        private QueryHandlerAbstract queryHandler;
         private KeyHandler keyHandler;
         public MainWindow()
         {

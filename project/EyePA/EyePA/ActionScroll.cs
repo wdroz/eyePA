@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyePA
 {
-    class ActionScroll : KeyAction, Scrollable
+    public class ActionScroll : KeyAction, Scrollable
     {
 
         private Scrollable scrollable;

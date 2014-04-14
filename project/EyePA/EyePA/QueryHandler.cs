@@ -9,16 +9,13 @@ using Tobii.EyeX.Client;
 
 namespace EyePA
 {
-    class QueryHandler
+    public class QueryHandler : QueryHandlerAbstract
     {
         private InteractionSystem _system;
         private InteractionContext _context;
-        private EventManager eventManager;
 
-        public QueryHandler(EventManager eventManager)
+        public QueryHandler(EventManager eventManager) : base(eventManager)
         {
-
-            this.eventManager = eventManager;
 
             _system = InteractionSystem.Initialize(LogTarget.Trace);
             _context = new InteractionContext(false);
@@ -39,7 +36,7 @@ namespace EyePA
             }
         }
 
-        public void close()
+        public override void close()
         {
             _context.DisableConnection();
             _context.Dispose();

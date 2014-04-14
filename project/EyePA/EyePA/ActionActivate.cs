@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace EyePA
 {
-    class ActionActivate : KeyAction, Activable
+    public class ActionActivate : KeyAction, Activable
     {
 
         private Activable activable;
