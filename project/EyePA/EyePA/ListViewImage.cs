@@ -5,20 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace EyePA
 {
     public class ListViewImage : ListView, Watchable, Activable
     {
         private System.Windows.Controls.ListView GUIListView;
+        private TextBlock GUICurrentID;
         private int currentId;
         private int nbFiles;
         private String filePath;
         private BigImageView bigImageView;
         private ImageView lastSelectedImage;
 
-        public ListViewImage(String filePath, System.Windows.Controls.ListView listView1, BigImageView bigImageView) : base()
+        public ListViewImage(String filePath, System.Windows.Controls.ListView listView1, BigImageView bigImageView, TextBlock GUICurrentID) : base()
         {
+            this.GUICurrentID = GUICurrentID;
             this.GUIListView = listView1;
             this.filePath = filePath;
             this.bigImageView = bigImageView;
@@ -54,6 +57,9 @@ namespace EyePA
                ImageView mv = new ImageView(file, bigImageView);
                this.addView(mv);
            }
+
+           this.GUICurrentID.Text = currentId + "/" + files.Length;
+
         }
 
         public override FrameworkElement renderUI()

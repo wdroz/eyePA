@@ -47,7 +47,7 @@ namespace EyePA
         {
             this.bigImageView = new BigImageView(null, GUIBigPicture);
 
-            this.listView = new ListViewImage(folder, this.GUIListView, this.bigImageView);
+            this.listView = new ListViewImage(folder, this.GUIListView, this.bigImageView, GUICurrentID);
             ImageView iv = (ImageView)listView.getListView.ElementAt(0);
 
             this.bigImageView.ImageView = iv;

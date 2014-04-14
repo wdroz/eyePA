@@ -21,6 +21,7 @@
         <Image x:Name="GUIImageTest" HorizontalAlignment="Left" Height="133" Margin="952,36,0,0" VerticalAlignment="Top" Width="143"/>
         <Button x:Name="GUIBtnLeft" Content="Left" HorizontalAlignment="Left" Margin="19,567,0,0" VerticalAlignment="Top" Width="133" Height="200"/>
         <Button x:Name="GUIBtnRight" Content="Right" HorizontalAlignment="Left" Margin="1533,567,0,0" VerticalAlignment="Top" Width="133" Height="200"/>
+        <TextBlock x:Name="GUICurrentID" HorizontalAlignment="Left" Margin="440,784,0,0" TextWrapping="Wrap" Text="0/0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
