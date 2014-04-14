@@ -65,7 +65,7 @@ namespace EyePA
 
         public void changeDirectory()
         {
-            this.folder = "C:\\images3";
+            this.folder = "C:\\imagesBig";
             this.updateFolder();
             this.eventManager.reset();
             this.register();

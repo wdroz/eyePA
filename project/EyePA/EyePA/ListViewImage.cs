@@ -155,7 +155,7 @@ namespace EyePA
             }
             catch(Exception e)
             {
-                //TODO résoudre que ça vient ici...
+                //TODO résoudre quand ça vient ici...
                 System.Console.WriteLine(e);
             }
         }
