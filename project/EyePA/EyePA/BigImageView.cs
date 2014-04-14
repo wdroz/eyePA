@@ -16,6 +16,7 @@ namespace EyePA
         private ImageView imageView;
         private Canvas canvas;
         private Nullable<Point> lastPoint;
+        private Stack<Brush> zoomMemory;
 
         public void setImageView(ImageView imv)
         {
@@ -26,8 +27,8 @@ namespace EyePA
         {
             this.imageView = imageView;
             this.canvas = cv;
-            this.lastPoint = new Point();
             this.lastPoint = null;
+            this.zoomMemory = new Stack<Brush>();
         }
 
         public ImageView ImageView
@@ -47,6 +48,8 @@ namespace EyePA
         public void zoomAt(System.Drawing.Rectangle rect)
         {
 
+            zoomMemory.Push(canvas.Background.Clone());
+
             Matrix m = canvas.Background.Transform.Value;
 
             Point p = new Point(rect.X + rect.Width/2, rect.Y + rect.Height/2);
@@ -65,15 +68,11 @@ namespace EyePA
 
             if (lastPoint != null)
             {
-                Matrix m = canvas.Background.Transform.Value;
 
-
-
-                m = canvas.Background.Transform.Value;
-                m.ScaleAtPrepend(1 / 1.1, 1 / 1.1, lastPoint.Value.X, lastPoint.Value.Y);
-
-
-                canvas.Background.Transform = new MatrixTransform(m);
+                if (zoomMemory.Count > 0)
+                {
+                    canvas.Background = zoomMemory.Pop();
+                }
             }
         }
     }
