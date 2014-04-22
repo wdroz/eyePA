@@ -66,6 +66,7 @@
     <Compile Include="BtnCanvasTest.cs" />
     <Compile Include="ButtonChangeDirectory.cs" />
     <Compile Include="ButtonLeft.cs" />
+    <Compile Include="ButtonNaviguateTo.cs" />
     <Compile Include="ButtonQuit.cs" />
     <Compile Include="ButtonRight.cs" />
     <Compile Include="ButtonView.cs" />

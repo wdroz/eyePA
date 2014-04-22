@@ -77,6 +77,18 @@ namespace EyePA
             ButtonQuit bq = new ButtonQuit(GUIQuit);
             registerWatchable(bq, GUIQuit);
             registerActivable(bq, GUIQuit);
+
+            ButtonNaviguateTo btnMyDownload = new ButtonNaviguateTo(GUIDownload, "TODO");
+            registerWatchable(btnMyDownload, GUIDownload);
+            registerActivable(btnMyDownload, GUIDownload);
+
+            ButtonNaviguateTo btnMyImages = new ButtonNaviguateTo(GUIMyImages, "TODO");
+            registerWatchable(btnMyImages, GUIMyImages);
+            registerActivable(btnMyImages, GUIMyImages);
+
+            ButtonNaviguateTo btnBureau = new ButtonNaviguateTo(GUIBureau, "TODO");
+            registerWatchable(btnBureau, GUIBureau);
+            registerActivable(btnBureau, GUIBureau);
         }
     }
 }
