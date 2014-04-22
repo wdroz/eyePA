@@ -25,9 +25,12 @@ namespace EyePA
         private QueryHandlerAbstract queryHandler;
         private KeyHandler keyHandler;
 
-        public Naviguate(EventManager eventManager, QueryHandlerAbstract queryHandler)
+        public Naviguate(EventManager eventManager, QueryHandlerAbstract queryHandler, String folder)
         {
             InitializeComponent();
+
+            this.previousRep = folder;
+
             this.eventManager = eventManager;
             this.queryHandler = queryHandler;
             this.keyHandler = new KeyHandler(eventManager);
