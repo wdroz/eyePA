@@ -32,6 +32,7 @@ namespace EyePA
             this.queryHandler = queryHandler;
             this.keyHandler = new KeyHandler(eventManager);
             this.eventManager.reset();
+
         }
 
         private void registerWatchable(Watchable w, FrameworkElement fe)
@@ -58,6 +59,18 @@ namespace EyePA
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             keyHandler.addKey(e);
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            register();
+        }
+
+        private void register()
+        {
+            ButtonQuit bq = new ButtonQuit(GUIQuit);
+            registerWatchable(bq, GUIQuit);
+            registerActivable(bq, GUIQuit);
         }
     }
 }
