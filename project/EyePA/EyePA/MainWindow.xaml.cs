@@ -65,10 +65,15 @@ namespace EyePA
 
         public void changeDirectory()
         {
+            /*
             this.folder = "C:\\imagesBig";
             this.updateFolder();
             this.eventManager.reset();
             this.register();
+            */
+            Naviguate naviguate = new Naviguate();
+            this.Close();
+            naviguate.Show();
         }
 
         private void GUIListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
