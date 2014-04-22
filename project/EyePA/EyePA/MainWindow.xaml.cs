@@ -71,7 +71,7 @@ namespace EyePA
             this.eventManager.reset();
             this.register();
             */
-            Naviguate naviguate = new Naviguate(this.eventManager);
+            Naviguate naviguate = new Naviguate(this.eventManager, queryHandler);
             this.Close();
             naviguate.Show();
         }

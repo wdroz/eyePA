@@ -22,17 +22,42 @@ namespace EyePA
 
         private String previousRep;
         private EventManager eventManager;
+        private QueryHandlerAbstract queryHandler;
+        private KeyHandler keyHandler;
 
-        public Naviguate(EventManager eventManager)
+        public Naviguate(EventManager eventManager, QueryHandlerAbstract queryHandler)
         {
             InitializeComponent();
             this.eventManager = eventManager;
+            this.queryHandler = queryHandler;
+            this.keyHandler = new KeyHandler(eventManager);
             this.eventManager.reset();
         }
 
-        private void GUIBureau_Copy_Click(object sender, RoutedEventArgs e)
+        private void registerWatchable(Watchable w, FrameworkElement fe)
         {
+            Point absolutePos = fe.PointToScreen(new System.Windows.Point(0, 0));
+            ActionWatch aw = new ActionWatch(absolutePos.X, absolutePos.Y, fe.Width, fe.Height, w);
+            this.eventManager.addKeyAction(aw);
+        }
 
+        private void registerActivable(Activable a, FrameworkElement fe)
+        {
+            Point absolutePos = fe.PointToScreen(new System.Windows.Point(0, 0));
+            ActionActivate aa = new ActionActivate(absolutePos.X, absolutePos.Y, fe.Width, fe.Height, a);
+            this.eventManager.addActivableKey(aa);
+        }
+
+        private void registerZoomable(Zoomable z, FrameworkElement fe)
+        {
+            Point absolutePos = fe.PointToScreen(new System.Windows.Point(0, 0));
+            ActionZoom az = new ActionZoom(absolutePos.X, absolutePos.Y, fe.Width, fe.Height, z);
+            this.eventManager.setZoomableKey(az);
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            keyHandler.addKey(e);
         }
     }
 }

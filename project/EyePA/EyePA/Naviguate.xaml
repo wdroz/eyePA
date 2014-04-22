@@ -1,7 +1,7 @@
 ﻿<Window x:Class="EyePA.Naviguate"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Naviguate" Height="880.225" Width="1136.9">
+        Title="Naviguate" Height="880.225" Width="1136.9" KeyDown="Window_KeyDown">
     <Grid>
         <Button x:Name="GUIBureau" Content="Bureau" HorizontalAlignment="Left" Margin="43,57,0,0" VerticalAlignment="Top" Width="119" Height="26"/>
         <Button x:Name="GUIDownload" Content="Mes téléchargements" HorizontalAlignment="Left" Margin="43,241,0,0" VerticalAlignment="Top" Width="119" Height="26"/>
@@ -11,7 +11,7 @@
         <Label x:Name="GUICurrentRep" Content="C:\Images" HorizontalAlignment="Left" Height="31" Margin="361,37,0,0" VerticalAlignment="Top" Width="111"/>
         <Button x:Name="GUIParent" Content="Parent" HorizontalAlignment="Left" Margin="902,57,0,0" VerticalAlignment="Top" Width="119" Height="26"/>
         <Button x:Name="GUIUP" Content="UP" HorizontalAlignment="Left" Margin="469,102,0,0" VerticalAlignment="Top" Width="119" Height="26"/>
-        <Button x:Name="GUIDOWN" Content="DOWN" HorizontalAlignment="Left" Margin="469,692,0,0" VerticalAlignment="Top" Width="119" Height="26" Click="GUIBureau_Copy_Click"/>
+        <Button x:Name="GUIDOWN" Content="DOWN" HorizontalAlignment="Left" Margin="469,692,0,0" VerticalAlignment="Top" Width="119" Height="26"/>
         <ListView x:Name="GUIListRep" HorizontalAlignment="Left" Height="545" Margin="336,142,0,0" VerticalAlignment="Top" Width="374">
             <ListView.View>
                 <GridView>
