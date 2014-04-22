@@ -23,9 +23,16 @@ namespace EyePA
         private String previousRep;
         private EventManager eventManager;
 
-        public Naviguate()
+        public Naviguate(EventManager eventManager)
         {
             InitializeComponent();
+            this.eventManager = eventManager;
+            this.eventManager.reset();
+        }
+
+        private void GUIBureau_Copy_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
