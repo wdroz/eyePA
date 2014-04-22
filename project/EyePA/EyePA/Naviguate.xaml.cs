@@ -66,6 +66,9 @@ namespace EyePA
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            GUICurrentRep.Content = this.previousRep;
+
+
             register();
         }
 
