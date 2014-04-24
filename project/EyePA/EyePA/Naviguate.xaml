@@ -9,7 +9,7 @@
         <Button x:Name="GUICancel" Content="Annuler" HorizontalAlignment="Left" Margin="43,575,0,0" VerticalAlignment="Top" Width="239" Height="75"/>
         <Button x:Name="GUIQuit" Content="Quitter" HorizontalAlignment="Left" Margin="43,711,0,0" VerticalAlignment="Top" Width="239" Height="111"/>
         <Label x:Name="GUICurrentRep" Content="C:\Images" HorizontalAlignment="Left" Height="31" Margin="361,37,0,0" VerticalAlignment="Top" Width="111"/>
-        <Button x:Name="GUIParent" Content="Parent" HorizontalAlignment="Left" Margin="902,57,0,0" VerticalAlignment="Top" Width="194" Height="109"/>
+        <Button x:Name="GUIParent" Content="Parent" HorizontalAlignment="Left" Margin="901,25,0,0" VerticalAlignment="Top" Width="194" Height="109"/>
         <Button x:Name="GUIUP" Content="UP" HorizontalAlignment="Left" Margin="336,69,0,0" VerticalAlignment="Top" Width="374" Height="55"/>
         <Button x:Name="GUIDOWN" Content="DOWN" HorizontalAlignment="Left" Margin="336,711,0,0" VerticalAlignment="Top" Width="374" Height="56"/>
         <ListView x:Name="GUIListRep" HorizontalAlignment="Left" Height="545" Margin="336,142,0,0" VerticalAlignment="Top" Width="374">
