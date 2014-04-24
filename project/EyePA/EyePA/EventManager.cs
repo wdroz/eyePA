@@ -47,16 +47,16 @@ namespace EyePA
         public void newQuery(Rectangle rect)
         {
             lastRectangle = rect;
-            //System.Console.WriteLine("X : " + x + "\tY : " + y);
+            selectBestKeyAction<KeyAction>(rect, myKeyActions, ref lastSelectedKeyAction);
+            selectBestKeyAction<ActionActivate>(rect, myActionsActivable, ref lastActionActivable);
+        }
+
+        private static void selectBestKeyAction<T>(Rectangle rect, List<T> actions, ref T last) where T : KeyAction
+        {
             double max = 0;
             KeyAction selectedKeyAction = null;
-            foreach(KeyAction ka in this.myKeyActions)
+            foreach (T ka in actions)
             {
-                /*if(ka.isForMe(rect))
-                {
-                    //System.Console.WriteLine("!!!!!! OBJET TROUVE !!!!!!!!!!");
-                    lastSelectedKeyAction = ka;
-                }*/
                 double intersection = ka.giveInterception(rect);
                 if (intersection > max)
                 {
@@ -64,23 +64,16 @@ namespace EyePA
                     selectedKeyAction = ka;
                 }
             }
-            foreach (KeyAction ka in this.myKeyActions)
+            foreach (T ka in actions)
             {
                 if (ka == selectedKeyAction)
                 {
+                    last = ka;
                     ka.runAction(rect);
                 }
                 else
                 {
                     ka.actionIfNotForMe();
-                }
-            }
-
-            foreach (ActionActivate aa in this.myActionsActivable)
-            {
-                if (aa.isForMe(rect))
-                {
-                    lastActionActivable = aa;
                 }
             }
         }   
