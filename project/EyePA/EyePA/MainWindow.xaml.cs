@@ -45,7 +45,7 @@ namespace EyePA
 
         public void updateFolder()
         {
-            this.bigImageView = new BigImageView(null, GUIBigPicture);
+            this.bigImageView = new BigImageView(null, GUIBigPicture, GUILabelZoomFactor);
 
             this.listView = new ListViewImage(folder, this.GUIListView, this.bigImageView, GUICurrentID);
             ImageView iv = (ImageView)listView.getListView.ElementAt(0);
