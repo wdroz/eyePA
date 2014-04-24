@@ -48,6 +48,7 @@ namespace EyePA
             }
             return (this.rectangle.Width * this.rectangle.Height) / (rectIntersection.Width * rectIntersection.Height);
         }
+        [Obsolete("isForMe is deprecated, please use giveInterception instead.")]
         public bool isForMe(Rectangle rect)
         {
             if(rect.IntersectsWith(this.rectangle))
