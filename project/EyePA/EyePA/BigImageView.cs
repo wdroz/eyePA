@@ -21,21 +21,31 @@ namespace EyePA
         private double zoomValue;
         private double zoomMaxValue;
 
+        private void reset()
+        {
+            this.lastPoint = null;
+            this.zoomValue = 1.0f;
+            this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
+            this.zoomMemory.Clear();
+        }
+
         public void setImageView(ImageView imv)
         {
             this.imageView = imv;
+            this.reset();
         }
 
         public BigImageView(ImageView imageView, Canvas cv, Label zoomFactor)
         {
             this.imageView = imageView;
             this.canvas = cv;
-            this.lastPoint = null;
+            
             this.zoomMemory = new Stack<Brush>();
             this.zoomFactor = zoomFactor;
-            this.zoomValue = 1.0f;
+            
             this.zoomMaxValue = 10;
-            this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
+            this.reset();
+            
         }
 
         public ImageView ImageView
