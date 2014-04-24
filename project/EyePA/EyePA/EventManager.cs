@@ -48,12 +48,31 @@ namespace EyePA
         {
             lastRectangle = rect;
             //System.Console.WriteLine("X : " + x + "\tY : " + y);
+            double max = 0;
+            KeyAction selectedKeyAction = null;
             foreach(KeyAction ka in this.myKeyActions)
             {
-                if(ka.isForMe(rect))
+                /*if(ka.isForMe(rect))
                 {
                     //System.Console.WriteLine("!!!!!! OBJET TROUVE !!!!!!!!!!");
                     lastSelectedKeyAction = ka;
+                }*/
+                double intersection = ka.giveInterception(rect);
+                if (intersection > max)
+                {
+                    max = intersection;
+                    selectedKeyAction = ka;
+                }
+            }
+            foreach (KeyAction ka in this.myKeyActions)
+            {
+                if (ka == selectedKeyAction)
+                {
+                    ka.runAction(rect);
+                }
+                else
+                {
+                    ka.actionIfNotForMe();
                 }
             }
 

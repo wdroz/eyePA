@@ -30,6 +30,24 @@ namespace EyePA
             this.lastRect = new Rectangle((int)x, (int)y, (int)w, (int)h);
         }
 
+        public void runAction(Rectangle rect)
+        {
+            this.lastRect.X = rect.X;
+            this.lastRect.Y = rect.Y;
+            this.lastRect.Width = rect.Width;
+            this.lastRect.Height = rect.Height;
+            actionIfForMe();
+        }
+
+        public double giveInterception(Rectangle rect)
+        {
+            Rectangle rectIntersection = Rectangle.Intersect(rect, this.rectangle);
+            if (rectIntersection.IsEmpty || (rectIntersection.Width == 0) || (rectIntersection.Height == 0))
+            {
+                return 0;
+            }
+            return (this.rectangle.Width * this.rectangle.Height) / (rectIntersection.Width * rectIntersection.Height);
+        }
         public bool isForMe(Rectangle rect)
         {
             if(rect.IntersectsWith(this.rectangle))
