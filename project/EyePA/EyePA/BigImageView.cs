@@ -35,6 +35,7 @@ namespace EyePA
             this.zoomFactor = zoomFactor;
             this.zoomValue = 1.0f;
             this.zoomMaxValue = 10;
+            this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
         }
 
         public ImageView ImageView
@@ -69,7 +70,7 @@ namespace EyePA
                 m.ScaleAtPrepend(1.1, 1.1, p.X, p.Y);
 
                 canvas.Background.Transform = new MatrixTransform(m);
-                this.zoomFactor.Content = "" + zoomValue;
+                this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
             }
         }
 
@@ -82,7 +83,7 @@ namespace EyePA
                 {
                     canvas.Background = zoomMemory.Pop();
                     this.zoomValue *= 1/1.1;
-                    this.zoomFactor.Content = "" + this.zoomValue;
+                    this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
                 }
             }
         }
