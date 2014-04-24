@@ -100,5 +100,12 @@ namespace EyePA
                 }
             }
         }
+
+        public void scrollAt(double x, double y)
+        {
+            //throw new NotImplementedException();
+            //TODO faire un translation en partant du milieu vers en suivant le vector (a,b)*c
+            this.canvas.Background.Transform.Value.Translate(x, y);
+        }
     }
 }

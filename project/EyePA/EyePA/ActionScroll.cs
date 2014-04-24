@@ -15,5 +15,10 @@ namespace EyePA
         {
             this.scrollable = scrollable;
         }
+
+        public void scrollAt(double x, double y)
+        {
+            this.scrollable.scrollAt(x, y);
+        }
     }
 }
