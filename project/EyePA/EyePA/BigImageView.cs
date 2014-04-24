@@ -27,10 +27,12 @@ namespace EyePA
             this.zoomValue = 1.0f;
             this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
             this.zoomMemory.Clear();
+            //this.imageView.select();
         }
 
         public void setImageView(ImageView imv)
         {
+            this.imageView.unselect();
             this.imageView = imv;
             this.reset();
         }
@@ -59,6 +61,7 @@ namespace EyePA
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = imageView.Image.Source;
             canvas.Background = ib;
+            imageView.select();
             return canvas;
         }
 

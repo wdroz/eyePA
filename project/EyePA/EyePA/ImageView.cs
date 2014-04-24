@@ -17,10 +17,29 @@ namespace EyePA
         private String url;
         private bool isSelected;
         private BigImageView bigImageView;
+        private bool isOnBigPicture;
 
         public Image Image
         {
             get { return image; }
+        }
+
+        public void select()
+        {
+            isOnBigPicture = true;
+            this.image.Effect = new DropShadowEffect
+            {
+                Color = new Color { A = 255, R = 255, G = 100, B = 100 },
+                Direction = 320,
+                ShadowDepth = 25,
+                Opacity = 0.7
+            };
+        }
+
+        public void unselect()
+        {
+            isOnBigPicture = false;
+            stopWatching();
         }
 
         public ImageView(String url, BigImageView bigImageView)
@@ -29,6 +48,7 @@ namespace EyePA
             this.image = new Image();
             this.image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(url));
             this.isSelected = false;
+            this.isOnBigPicture = false;
             this.bigImageView = bigImageView;
         }
 
@@ -76,26 +96,33 @@ namespace EyePA
         public void startWatching(System.Drawing.Rectangle rectangle)
         {
             isSelected = true;
-            this.image.Effect = new DropShadowEffect
+            if (!isOnBigPicture)
             {
-                Color = new Color { A = 255, R = 255, G = 255, B = 0 },
-                Direction = 320,
-                ShadowDepth = 25,
-                Opacity = 0.7
-            };
+                this.image.Effect = new DropShadowEffect
+                {
+                    Color = new Color { A = 255, R = 255, G = 255, B = 0 },
+                    Direction = 320,
+                    ShadowDepth = 25,
+                    Opacity = 0.7
+                };
+            }
         }
 
         public void stopWatching()
         {
-            isSelected = false;
-            try
+            
+            if (!isOnBigPicture)
             {
-                this.image.Effect = new DropShadowEffect
+                isSelected = false;
+                try
                 {
+                    this.image.Effect = new DropShadowEffect
+                    {
 
-                };
+                    };
+                }
+                catch (Exception) { }
             }
-            catch (Exception) { }
         }
 
         public void addKey(System.Windows.Input.KeyEventArgs e)
