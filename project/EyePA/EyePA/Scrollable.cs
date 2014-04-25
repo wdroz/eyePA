@@ -8,6 +8,6 @@ namespace EyePA
 {
     public interface Scrollable
     {
-        void scrollAt(double x, double y);
+        void scrollAt(System.Drawing.Rectangle rect);
     }
 }

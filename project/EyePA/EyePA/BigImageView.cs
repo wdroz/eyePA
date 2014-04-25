@@ -20,6 +20,7 @@ namespace EyePA
         private Label zoomFactor;
         private double zoomValue;
         private double zoomMaxValue;
+        private double speedScroll;
 
         private void reset()
         {
@@ -46,6 +47,7 @@ namespace EyePA
             this.zoomFactor = zoomFactor;
             
             this.zoomMaxValue = 10;
+            this.speedScroll = 4;
             this.reset();
             
         }
@@ -79,7 +81,7 @@ namespace EyePA
                 lastPoint = p;
            
 
-                m = canvas.Background.Transform.Value;
+                //m = canvas.Background.Transform.Value;
                 m.ScaleAtPrepend(1.1, 1.1, p.X, p.Y);
 
                 canvas.Background.Transform = new MatrixTransform(m);
@@ -101,11 +103,23 @@ namespace EyePA
             }
         }
 
-        public void scrollAt(double x, double y)
+        public void scrollAt(System.Drawing.Rectangle rect)
         {
             //throw new NotImplementedException();
             //TODO faire un translation en partant du milieu vers en suivant le vector (a,b)*c
-            this.canvas.Background.Transform.Value.Translate(x, y);
+            Matrix m = canvas.Background.Transform.Value;
+            Point absolutePos = canvas.PointToScreen(new System.Windows.Point(0, 0));
+            
+            absolutePos.X += canvas.Width / 2;
+            absolutePos.Y += canvas.Height / 2;
+
+            double x = absolutePos.X - (rect.X + rect.Width/2);
+            double y = absolutePos.Y - (rect.Y + rect.Height/2);
+            double norme = Math.Sqrt(x*x + y*y);
+            double xNormalized = x/norme;
+            double yNormalized = y/norme;
+            m.Translate(xNormalized*speedScroll, yNormalized*speedScroll);
+            canvas.Background.Transform = new MatrixTransform(m);
         }
     }
 }

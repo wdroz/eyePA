@@ -16,9 +16,10 @@ namespace EyePA
             this.scrollable = scrollable;
         }
 
-        public void scrollAt(double x, double y)
+        public void scrollAt(System.Drawing.Rectangle rect)
         {
-            this.scrollable.scrollAt(x, y);
+            this.scrollable.scrollAt(rect);
         }
+
     }
 }

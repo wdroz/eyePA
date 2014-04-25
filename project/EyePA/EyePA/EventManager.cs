@@ -18,6 +18,7 @@ namespace EyePA
         private ActionActivate lastActionActivable;
         private ActionZoom lastActionZoom;
         private Rectangle lastRectangle;
+        private ActionScroll lastActionScroll;
 
         public EventManager()
         {
@@ -27,6 +28,7 @@ namespace EyePA
             lastActionActivable = null;
             lastActionZoom = null;
             lastRectangle = new Rectangle();
+            lastActionScroll = null;
         }
 
         public void addKeyAction(KeyAction ka)
@@ -42,6 +44,11 @@ namespace EyePA
         public void setZoomableKey(ActionZoom az)
         {
             this.lastActionZoom = az;
+        }
+
+        public void setScrollable(ActionScroll actionScroll)
+        {
+            this.lastActionScroll = actionScroll;
         }
         
         public void newQuery(Rectangle rect)
@@ -96,6 +103,13 @@ namespace EyePA
                 if (lastActionZoom != null)
                 {
                     lastActionZoom.unzoomA();
+                }
+            }
+            else if (e.Key == System.Windows.Input.Key.E)
+            {
+                if (lastActionScroll != null)
+                {
+                    lastActionScroll.scrollAt(lastRectangle);
                 }
             }
             

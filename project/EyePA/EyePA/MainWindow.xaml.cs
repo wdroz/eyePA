@@ -139,6 +139,7 @@ namespace EyePA
             registerActivable(bcd, GUIBtnBrowse);
 
             registerZoomable(bigImageView, GUIBigPicture);
+            registerScrollage(bigImageView, GUIBigPicture);
         }
 
         private void registerWatchable(Watchable w, FrameworkElement fe)
@@ -160,6 +161,13 @@ namespace EyePA
             Point absolutePos = fe.PointToScreen(new System.Windows.Point(0, 0));
             ActionZoom az = new ActionZoom(absolutePos.X, absolutePos.Y, fe.Width, fe.Height, z);
             this.eventManager.setZoomableKey(az);
+        }
+
+        private void registerScrollage(Scrollable z, FrameworkElement fe)
+        {
+            Point absolutePos = fe.PointToScreen(new System.Windows.Point(0, 0));
+            ActionScroll az = new ActionScroll(absolutePos.X, absolutePos.Y, fe.Width, fe.Height, z);
+            this.eventManager.setScrollable(az);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
