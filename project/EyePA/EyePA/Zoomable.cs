@@ -10,6 +10,6 @@ namespace EyePA
     public interface Zoomable
     {
         void zoomAt(Rectangle rect);
-        void unzoomA();
+        void unzoomAt(Rectangle rect);
     }
 }

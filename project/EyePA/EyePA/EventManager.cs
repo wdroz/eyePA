@@ -102,7 +102,7 @@ namespace EyePA
             {
                 if (lastActionZoom != null)
                 {
-                    lastActionZoom.unzoomA();
+                    lastActionZoom.unzoomAt(lastRectangle);
                 }
             }
             else if (e.Key == System.Windows.Input.Key.E)

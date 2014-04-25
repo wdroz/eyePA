@@ -79,22 +79,49 @@ namespace EyePA
 
                 Point p = new Point(rect.X + rect.Width/2, rect.Y + rect.Height/2);
                 lastPoint = p;
-           
-                m.ScaleAtPrepend(1.1, 1.1, p.X, p.Y);
+
+                Point absolutePos = canvas.PointToScreen(new System.Windows.Point(0, 0));
+                //on se positionne au centre de l'image
+                absolutePos.X += canvas.Width / 2;
+                absolutePos.Y += canvas.Height / 2;
+                //Si on veut le vecteur AB, il faut faire OB - OA
+                double x = absolutePos.X - (rect.X + rect.Width / 2);
+                double y = absolutePos.Y - (rect.Y + rect.Height / 2);
+
+                m.Translate(x, y);
+                m.Scale(1.1, 1.1);
+                //m.ScaleAtPrepend(1.1, 1.1, p.X, p.Y);
 
                 canvas.Background.Transform = new MatrixTransform(m);
                 this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
             }
         }
 
-        public void unzoomA()
+        public void unzoomAt(System.Drawing.Rectangle rect)
         {
             if (lastPoint != null)
             {
 
-                if (zoomMemory.Count > 0)
+                if (zoomMemory.Count > 0 && this.zoomValue > 1.01f)
                 {
-                    canvas.Background = zoomMemory.Pop();
+                    //canvas.Background = zoomMemory.Pop();
+                    Matrix m = canvas.Background.Transform.Value;
+
+                    Point p = new Point(rect.X + rect.Width / 2, rect.Y + rect.Height / 2);
+                    lastPoint = p;
+
+                    Point absolutePos = canvas.PointToScreen(new System.Windows.Point(0, 0));
+                    //on se positionne au centre de l'image
+                    absolutePos.X += canvas.Width / 2;
+                    absolutePos.Y += canvas.Height / 2;
+                    //Si on veut le vecteur AB, il faut faire OB - OA
+                    double x = absolutePos.X - (rect.X + rect.Width / 2);
+                    double y = absolutePos.Y - (rect.Y + rect.Height / 2);
+
+                    m.Translate(x, y);
+                    m.Scale(1 / 1.1, 1 / 1.1);
+                    //m.ScaleAtPrepend(1/1.1, 1/1.1, p.X, p.Y);
+                    canvas.Background.Transform = new MatrixTransform(m);
                     this.zoomValue *= 1/1.1;
                     this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
                 }

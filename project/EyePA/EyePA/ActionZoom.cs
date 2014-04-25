@@ -20,9 +20,9 @@ namespace EyePA
             this.zoomable.zoomAt(rect);
         }
 
-        public void unzoomA()
+        public void unzoomAt(System.Drawing.Rectangle rect)
         {
-            this.zoomable.unzoomA();
+            this.zoomable.unzoomAt(rect);
         }
     }
 }
