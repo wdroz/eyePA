@@ -80,8 +80,6 @@ namespace EyePA
                 Point p = new Point(rect.X + rect.Width/2, rect.Y + rect.Height/2);
                 lastPoint = p;
            
-
-                //m = canvas.Background.Transform.Value;
                 m.ScaleAtPrepend(1.1, 1.1, p.X, p.Y);
 
                 canvas.Background.Transform = new MatrixTransform(m);
@@ -105,19 +103,21 @@ namespace EyePA
 
         public void scrollAt(System.Drawing.Rectangle rect)
         {
-            //throw new NotImplementedException();
-            //TODO faire un translation en partant du milieu vers en suivant le vector (a,b)*c
             Matrix m = canvas.Background.Transform.Value;
             Point absolutePos = canvas.PointToScreen(new System.Windows.Point(0, 0));
-            
+            //on se positionne au centre de l'image
             absolutePos.X += canvas.Width / 2;
             absolutePos.Y += canvas.Height / 2;
-
+            //Si on veut le vecteur AB, il faut faire OB - OA
             double x = absolutePos.X - (rect.X + rect.Width/2);
             double y = absolutePos.Y - (rect.Y + rect.Height/2);
+            
+            //on normalise le vecteur AB
             double norme = Math.Sqrt(x*x + y*y);
             double xNormalized = x/norme;
             double yNormalized = y/norme;
+            
+            //on effectue une tranlation avec speedScroll qui va donner la vitesse du scroll
             m.Translate(xNormalized*speedScroll, yNormalized*speedScroll);
             canvas.Background.Transform = new MatrixTransform(m);
         }
