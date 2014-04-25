@@ -47,7 +47,7 @@ namespace EyePA
             this.zoomFactor = zoomFactor;
             
             this.zoomMaxValue = 10;
-            this.speedScroll = 4;
+            this.speedScroll = 10;
             this.reset();
             
         }
