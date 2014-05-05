@@ -21,6 +21,7 @@ namespace EyePA
         private double zoomValue;
         private double zoomMaxValue;
         private double speedScroll;
+        private double zoomForce;
 
         private void reset()
         {
@@ -48,6 +49,7 @@ namespace EyePA
             
             this.zoomMaxValue = 10;
             this.speedScroll = 10;
+            this.zoomForce = 1.015;
             this.reset();
             
         }
@@ -70,9 +72,9 @@ namespace EyePA
         public void zoomAt(System.Drawing.Rectangle rect)
         {
             
-            if (zoomValue*1.1 < zoomMaxValue)
+            if (zoomValue*this.zoomForce < zoomMaxValue)
             {
-                zoomValue *= 1.1;
+                zoomValue *= this.zoomForce;
                 zoomMemory.Push(canvas.Background.Clone());
 
                 Matrix m = canvas.Background.Transform.Value;
@@ -89,7 +91,7 @@ namespace EyePA
                 double y = absolutePos.Y - (rect.Y + rect.Height / 2);
 
                 m.Translate(x, y);
-                m.Scale(1.1, 1.1);
+                m.Scale(this.zoomForce, this.zoomForce);
                 //m.ScaleAtPrepend(1.1, 1.1, p.X, p.Y);
 
                 canvas.Background.Transform = new MatrixTransform(m);
@@ -119,10 +121,10 @@ namespace EyePA
                     double y = absolutePos.Y - (rect.Y + rect.Height / 2);
 
                     m.Translate(x, y);
-                    m.Scale(1 / 1.1, 1 / 1.1);
+                    m.Scale(1 / this.zoomForce, 1 / this.zoomForce);
                     //m.ScaleAtPrepend(1/1.1, 1/1.1, p.X, p.Y);
                     canvas.Background.Transform = new MatrixTransform(m);
-                    this.zoomValue *= 1/1.1;
+                    this.zoomValue *= 1 / this.zoomForce;
                     this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
                 }
             }
