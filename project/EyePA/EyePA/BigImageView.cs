@@ -74,14 +74,8 @@ namespace EyePA
             
             if (zoomValue*this.zoomForce < zoomMaxValue)
             {
-                zoomValue *= this.zoomForce;
-                zoomMemory.Push(canvas.Background.Clone());
-
+                this.zoomValue *= this.zoomForce;
                 Matrix m = canvas.Background.Transform.Value;
-
-                Point p = new Point(rect.X + rect.Width/2, rect.Y + rect.Height/2);
-                lastPoint = p;
-
                 Point absolutePos = canvas.PointToScreen(new System.Windows.Point(0, 0));
                 //on se positionne au centre de l'image
                 absolutePos.X += canvas.Width / 2;
@@ -90,10 +84,14 @@ namespace EyePA
                 double x = absolutePos.X - (rect.X + rect.Width / 2);
                 double y = absolutePos.Y - (rect.Y + rect.Height / 2);
 
-                m.Translate(x, y);
-                m.Scale(this.zoomForce, this.zoomForce);
-                //m.ScaleAtPrepend(1.1, 1.1, p.X, p.Y);
+                //on normalise le vecteur AB
+                double norme = Math.Sqrt(x * x + y * y);
+                double xNormalized = x / norme;
+                double yNormalized = y / norme;
 
+                //on effectue une tranlation avec speedScroll qui va donner la vitesse du scroll
+                m.Translate(xNormalized * speedScroll, yNormalized * speedScroll);
+                m.Scale(this.zoomForce, this.zoomForce);
                 canvas.Background.Transform = new MatrixTransform(m);
                 this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
             }
@@ -101,32 +99,28 @@ namespace EyePA
 
         public void unzoomAt(System.Drawing.Rectangle rect)
         {
-            if (lastPoint != null)
+            if (this.zoomValue > 1.01f)
             {
+                this.zoomValue *= 1 / this.zoomForce;
+                Matrix m = canvas.Background.Transform.Value;
+                Point absolutePos = canvas.PointToScreen(new System.Windows.Point(0, 0));
+                //on se positionne au centre de l'image
+                absolutePos.X += canvas.Width / 2;
+                absolutePos.Y += canvas.Height / 2;
+                //Si on veut le vecteur AB, il faut faire OB - OA
+                double x = absolutePos.X - (rect.X + rect.Width / 2);
+                double y = absolutePos.Y - (rect.Y + rect.Height / 2);
 
-                if (zoomMemory.Count > 0 && this.zoomValue > 1.01f)
-                {
-                    //canvas.Background = zoomMemory.Pop();
-                    Matrix m = canvas.Background.Transform.Value;
+                //on normalise le vecteur AB
+                double norme = Math.Sqrt(x * x + y * y);
+                double xNormalized = x / norme;
+                double yNormalized = y / norme;
 
-                    Point p = new Point(rect.X + rect.Width / 2, rect.Y + rect.Height / 2);
-                    lastPoint = p;
-
-                    Point absolutePos = canvas.PointToScreen(new System.Windows.Point(0, 0));
-                    //on se positionne au centre de l'image
-                    absolutePos.X += canvas.Width / 2;
-                    absolutePos.Y += canvas.Height / 2;
-                    //Si on veut le vecteur AB, il faut faire OB - OA
-                    double x = absolutePos.X - (rect.X + rect.Width / 2);
-                    double y = absolutePos.Y - (rect.Y + rect.Height / 2);
-
-                    m.Translate(x, y);
-                    m.Scale(1 / this.zoomForce, 1 / this.zoomForce);
-                    //m.ScaleAtPrepend(1/1.1, 1/1.1, p.X, p.Y);
-                    canvas.Background.Transform = new MatrixTransform(m);
-                    this.zoomValue *= 1 / this.zoomForce;
-                    this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
-                }
+                //on effectue une tranlation avec speedScroll qui va donner la vitesse du scroll
+                m.Scale(1/this.zoomForce, 1/this.zoomForce);
+                m.Translate(xNormalized * speedScroll, yNormalized * speedScroll);
+                canvas.Background.Transform = new MatrixTransform(m);
+                this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
             }
         }
 
