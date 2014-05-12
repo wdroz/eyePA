@@ -106,12 +106,8 @@ namespace EyePA
                 double x = (absolutePos.X) - (rect.X + rect.Width / 2);
                 double y = (absolutePos.Y) - (rect.Y + rect.Height / 2);
 
-                //on normalise le vecteur AB
-                double norme = Math.Sqrt(x * x + y * y);
-                double xNormalized = x / norme;
-                double yNormalized = y / norme;
                 //on effectue une tranlation avec speedScroll qui va donner la vitesse du scroll
-                m.Translate(xNormalized * speedScroll + x * speedScroll, yNormalized * speedScroll + y * speedScroll);
+                m.Translate(x * speedScroll, y * speedScroll);
                 m.Scale(this.zoomForce, this.zoomForce);
                 canvas.Background.Transform = new MatrixTransform(m);
                 this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
@@ -132,14 +128,9 @@ namespace EyePA
                 double x = absolutePos.X - (rect.X + rect.Width / 2);
                 double y = absolutePos.Y - (rect.Y + rect.Height / 2);
 
-                //on normalise le vecteur AB
-                double norme = Math.Sqrt(x * x + y * y);
-                double xNormalized = x / norme;
-                double yNormalized = y / norme;
-
                 //on effectue une tranlation avec speedScroll qui va donner la vitesse du scroll
                 m.Scale(1/this.zoomForce, 1/this.zoomForce);
-                m.Translate(xNormalized * speedScroll + x * speedScroll, yNormalized * speedScroll + y * speedScroll);
+                m.Translate(x * speedScroll, y * speedScroll);
                 
                 canvas.Background.Transform = new MatrixTransform(m);
                 this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
@@ -157,13 +148,8 @@ namespace EyePA
             double x = absolutePos.X - (rect.X + rect.Width/2);
             double y = absolutePos.Y - (rect.Y + rect.Height/2);
             
-            //on normalise le vecteur AB
-            double norme = Math.Sqrt(x*x + y*y);
-            double xNormalized = x/norme;
-            double yNormalized = y/norme;
-            
             //on effectue une tranlation avec speedScroll qui va donner la vitesse du scroll
-            m.Translate(xNormalized * speedScroll + x * speedScroll, yNormalized * speedScroll + y * speedScroll);
+            m.Translate(x * speedScroll, y * speedScroll);
             canvas.Background.Transform = new MatrixTransform(m);
         }
     }
