@@ -16,7 +16,6 @@ namespace EyePA
 
         public QueryHandler(EventManager eventManager) : base(eventManager)
         {
-
             _system = InteractionSystem.Initialize(LogTarget.Trace);
             _context = new InteractionContext(false);
             _context.RegisterQueryHandlerForCurrentProcess(HandleQuery);

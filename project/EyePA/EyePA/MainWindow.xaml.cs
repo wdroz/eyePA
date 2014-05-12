@@ -27,6 +27,7 @@ namespace EyePA
         private EventManager eventManager;
         private QueryHandlerAbstract queryHandler;
         private KeyHandler keyHandler;
+        private bool hasRezized;
         public MainWindow()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace EyePA
 
         public void formInit()
         {
+            this.hasRezized = false;
             this.ResizeMode = ResizeMode.NoResize;
             Config config = Config.getInstance();
             folder = config.DefaultPath;
@@ -106,11 +108,15 @@ namespace EyePA
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            eventManager = new EventManager();
-            queryHandler = new QueryHandler(eventManager);
-            keyHandler = new KeyHandler(eventManager);
-            
-            register();
+            if (!hasRezized)
+            {
+                eventManager = new EventManager();
+                queryHandler = new QueryHandler(eventManager);
+                keyHandler = new KeyHandler(eventManager);
+
+                register();
+                hasRezized = true;
+            }
         }
 
         private void register()
