@@ -68,7 +68,7 @@ namespace EyePA
             this.zoomFactor = zoomFactor;
             this.zoomMaxValueReference = 10.0;
             this.srcReference = 1920 * 1080;
-            this.speedScroll = 10.0;
+            this.speedScroll = 0.1;
             this.zoomForce = 1.015;
             this.coefImageSizeZoom = 3;
             this.reset();
@@ -103,16 +103,15 @@ namespace EyePA
                 absolutePos.X += canvas.Width / 2;
                 absolutePos.Y += canvas.Height / 2;
                 //Si on veut le vecteur AB, il faut faire OB - OA
-                double x = absolutePos.X - (rect.X + rect.Width / 2);
-                double y = absolutePos.Y - (rect.Y + rect.Height / 2);
+                double x = (absolutePos.X) - (rect.X + rect.Width / 2);
+                double y = (absolutePos.Y) - (rect.Y + rect.Height / 2);
 
                 //on normalise le vecteur AB
                 double norme = Math.Sqrt(x * x + y * y);
                 double xNormalized = x / norme;
                 double yNormalized = y / norme;
-
                 //on effectue une tranlation avec speedScroll qui va donner la vitesse du scroll
-                m.Translate(xNormalized * speedScroll, yNormalized * speedScroll);
+                m.Translate(xNormalized * speedScroll + x * speedScroll, yNormalized * speedScroll + y * speedScroll);
                 m.Scale(this.zoomForce, this.zoomForce);
                 canvas.Background.Transform = new MatrixTransform(m);
                 this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
@@ -140,7 +139,8 @@ namespace EyePA
 
                 //on effectue une tranlation avec speedScroll qui va donner la vitesse du scroll
                 m.Scale(1/this.zoomForce, 1/this.zoomForce);
-                m.Translate(xNormalized * speedScroll, yNormalized * speedScroll);
+                m.Translate(xNormalized * speedScroll + x * speedScroll, yNormalized * speedScroll + y * speedScroll);
+                
                 canvas.Background.Transform = new MatrixTransform(m);
                 this.zoomFactor.Content = string.Format("{0:0.00}", zoomValue);
             }
@@ -163,7 +163,7 @@ namespace EyePA
             double yNormalized = y/norme;
             
             //on effectue une tranlation avec speedScroll qui va donner la vitesse du scroll
-            m.Translate(xNormalized*speedScroll, yNormalized*speedScroll);
+            m.Translate(xNormalized * speedScroll + x * speedScroll, yNormalized * speedScroll + y * speedScroll);
             canvas.Background.Transform = new MatrixTransform(m);
         }
     }
