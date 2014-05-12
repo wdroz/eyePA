@@ -22,6 +22,9 @@ namespace EyePA
         private double zoomMaxValue;
         private double speedScroll;
         private double zoomForce;
+        private double srcReference;
+        private double zoomMaxValueReference;
+        private double coefImageSizeZoom;
 
         private void reset()
         {
@@ -32,11 +35,28 @@ namespace EyePA
             //this.imageView.select();
         }
 
+        private void setZoomMaxValue(ImageView imv)
+        {
+            if (imv != null)
+            {
+                double taille = imv.Image.Source.Height * imv.Image.Source.Width;
+                if (taille > srcReference)
+                {
+                    zoomMaxValue = zoomMaxValueReference + Math.Log10(taille - srcReference) * coefImageSizeZoom;
+                }
+                else
+                {
+                    zoomMaxValue = zoomMaxValueReference;
+                }
+            }
+        }
+
         public void setImageView(ImageView imv)
         {
             this.imageView.unselect();
             this.imageView = imv;
             this.reset();
+            setZoomMaxValue(imv);
         }
 
         public BigImageView(ImageView imageView, Canvas cv, Label zoomFactor)
@@ -46,11 +66,13 @@ namespace EyePA
             
             this.zoomMemory = new Stack<Brush>();
             this.zoomFactor = zoomFactor;
-            
-            this.zoomMaxValue = 10;
-            this.speedScroll = 10;
+            this.zoomMaxValueReference = 10.0;
+            this.srcReference = 1920 * 1080;
+            this.speedScroll = 10.0;
             this.zoomForce = 1.015;
+            this.coefImageSizeZoom = 3;
             this.reset();
+            setZoomMaxValue(imageView);
             
         }
 
