@@ -13,7 +13,7 @@ namespace EyePA
         public ButtonQuit(Button btn) : base(btn) { }
         public override void addKey(System.Windows.Input.KeyEventArgs e)
         {
-            if(e.Key == System.Windows.Input.Key.A)
+            if(e.Key == Config.getInstance().KeyActivation)
             {
                 Application.Current.Shutdown();
             }

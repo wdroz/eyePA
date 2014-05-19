@@ -111,7 +111,8 @@ namespace EyePA
             if (!hasRezized)
             {
                 eventManager = new EventManager();
-                queryHandler = new QueryHandler(eventManager);
+                queryHandler = Config.getInstance().getQueryHandler(eventManager);
+                //queryHandler = new QueryHandler(eventManager);
                 keyHandler = new KeyHandler(eventManager);
 
                 register();

@@ -66,11 +66,11 @@ namespace EyePA
             
             this.zoomMemory = new Stack<Brush>();
             this.zoomFactor = zoomFactor;
-            this.zoomMaxValueReference = 10.0;
-            this.srcReference = 1920 * 1080;
-            this.speedScroll = 0.1;
-            this.zoomForce = 1.015;
-            this.coefImageSizeZoom = 3;
+            this.zoomMaxValueReference = Config.getInstance().ZoomMaxValueReference;
+            this.srcReference = Config.getInstance().SrcReference;
+            this.speedScroll = Config.getInstance().SpeedScroll;
+            this.zoomForce = Config.getInstance().ZoomForce;
+            this.coefImageSizeZoom = Config.getInstance().CoefImageSizeZoom;
             this.reset();
             setZoomMaxValue(imageView);
             

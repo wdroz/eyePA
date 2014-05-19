@@ -18,7 +18,7 @@ namespace EyePA
 
         public override void addKey(System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.A)
+            if (e.Key == Config.getInstance().KeyActivation)
             {
                 //TODO faire action
             }

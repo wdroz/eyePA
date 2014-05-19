@@ -87,25 +87,25 @@ namespace EyePA
  
         public void newKey(KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.A)
+            if (e.Key == Config.getInstance().KeyActivation)
             {
                 lastActionActivable.addKey(e);
             }
-            else if(e.Key == System.Windows.Input.Key.W)
+            else if (e.Key == Config.getInstance().KeyZoom)
             {
                 if(lastActionZoom != null)
                 {
                     lastActionZoom.zoomAt(lastRectangle);
                 }
             }
-            else if (e.Key == System.Windows.Input.Key.S)
+            else if (e.Key == Config.getInstance().KeyUnzoom)
             {
                 if (lastActionZoom != null)
                 {
                     lastActionZoom.unzoomAt(lastRectangle);
                 }
             }
-            else if (e.Key == System.Windows.Input.Key.E)
+            else if (e.Key == Config.getInstance().KeyScroll)
             {
                 if (lastActionScroll != null)
                 {

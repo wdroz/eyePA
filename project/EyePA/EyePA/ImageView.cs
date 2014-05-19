@@ -129,7 +129,7 @@ namespace EyePA
         {
             System.Console.WriteLine("ImageView add key");
 
-            if(e.Key == System.Windows.Input.Key.A)
+            if (e.Key == Config.getInstance().KeyActivation)
             {
                 this.bigImageView.setImageView(this);
                 this.bigImageView.renderUI();
