@@ -30,6 +30,13 @@ namespace EyePA
         private double zoomForce;
         private double coefImageSizeZoom;
         private QueryHandlerAbstract queryHandler;
+        private string[] listDossiers;
+
+        public string[] ListDossiers
+        {
+            get { return listDossiers; }
+            set { listDossiers = value; }
+        }
 
         public double ZoomMaxValueReference
         {
@@ -123,6 +130,27 @@ namespace EyePA
             this.imagesW = Int32.Parse(ConfigurationManager.AppSettings["imagesW"]);
             this.imagesH = Int32.Parse(ConfigurationManager.AppSettings["imagesH"]);
             this.numberOfImages = Int32.Parse(ConfigurationManager.AppSettings["numberOfImages"]);
+            this.listDossiers = ConfigurationManager.AppSettings["listDossiers"].Split('\n');
+            List<String> list = new List<String>();
+            
+            
+            foreach(string item in listDossiers)
+            {
+                string filteredItem = item.Replace("\r","").Replace("\n","").Replace("\t", "");
+                filteredItem = Environment.ExpandEnvironmentVariables(filteredItem);
+                if(System.IO.Directory.Exists(filteredItem))
+                {
+                    list.Add(filteredItem);
+                }
+
+            }
+            this.listDossiers = list.ToArray();
+
+            int i = 0;
+            foreach (string item in listDossiers)
+            {
+                System.Console.Out.WriteLine("" + ++i + " item : " + item);
+            }
 
 
         }

@@ -24,6 +24,7 @@ namespace EyePA
         private EventManager eventManager;
         private QueryHandlerAbstract queryHandler;
         private KeyHandler keyHandler;
+        private List<Button> listRep;
 
         public Naviguate(EventManager eventManager, QueryHandlerAbstract queryHandler, String folder)
         {
@@ -35,6 +36,18 @@ namespace EyePA
             this.queryHandler = queryHandler;
             this.keyHandler = new KeyHandler(eventManager);
             this.eventManager.reset();
+
+            this.listRep = new List<Button>();
+            foreach(string item in Config.getInstance().ListDossiers)
+            {
+                Button btn = new Button();
+                btn.Width = 200;
+                btn.Height = 30;
+                btn.Margin = new System.Windows.Thickness(100, 100, 0, 0);
+                btn.Content = item;
+                this.listRep.Add(btn);
+                this.GUIListRep.Items.Add(btn);
+            }
 
         }
 
@@ -66,8 +79,6 @@ namespace EyePA
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            GUICurrentRep.Content = this.previousRep;
-
 
             register();
         }
@@ -78,17 +89,17 @@ namespace EyePA
             registerWatchable(bq, GUIQuit);
             registerActivable(bq, GUIQuit);
 
-            ButtonNaviguateTo btnMyDownload = new ButtonNaviguateTo(GUIDownload, "%HOMEDRIVE%\\%HOMEPATH%\\Pictures", this);
-            registerWatchable(btnMyDownload, GUIDownload);
-            registerActivable(btnMyDownload, GUIDownload);
+           
 
-            ButtonNaviguateTo btnMyImages = new ButtonNaviguateTo(GUIMyImages, "%HOMEDRIVE%\\%HOMEPATH%\\Pictures", this);
-            registerWatchable(btnMyImages, GUIMyImages);
-            registerActivable(btnMyImages, GUIMyImages);
+            foreach(Button btn in this.listRep)
+            {
+                ButtonNaviguateTo btnNaviguate = new ButtonNaviguateTo(btn, (string)btn.Content, this);
+                registerWatchable(btnNaviguate, btn);
+                registerActivable(btnNaviguate, btn);
+            }
 
-            ButtonNaviguateTo btnBureau = new ButtonNaviguateTo(GUIBureau, "%HOMEDRIVE%\\%HOMEPATH%\\Pictures", this);
-            registerWatchable(btnBureau, GUIBureau);
-            registerActivable(btnBureau, GUIBureau);
+           
+
         }
     }
 }

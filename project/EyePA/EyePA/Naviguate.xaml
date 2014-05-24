@@ -3,23 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Naviguate" Height="880.225" Width="1136.9" KeyDown="Window_KeyDown" SizeChanged="Window_SizeChanged">
     <Grid>
-        <Button x:Name="GUIBureau" Content="Bureau" HorizontalAlignment="Left" Margin="43,33,0,0" VerticalAlignment="Top" Width="239" Height="91"/>
-        <Button x:Name="GUIDownload" Content="Mes téléchargements" HorizontalAlignment="Left" Margin="43,292,0,0" VerticalAlignment="Top" Width="239" Height="111"/>
-        <Button x:Name="GUIMyImages" Content="Mes images" HorizontalAlignment="Left" Margin="43,163,0,0" VerticalAlignment="Top" Width="239" Height="96"/>
-        <Button x:Name="GUICancel" Content="Annuler" HorizontalAlignment="Left" Margin="43,575,0,0" VerticalAlignment="Top" Width="239" Height="75"/>
+        <Button x:Name="GUICancel" Content="Annuler" HorizontalAlignment="Left" Margin="865,711,0,0" VerticalAlignment="Top" Width="239" Height="111"/>
         <Button x:Name="GUIQuit" Content="Quitter" HorizontalAlignment="Left" Margin="43,711,0,0" VerticalAlignment="Top" Width="239" Height="111"/>
-        <Label x:Name="GUICurrentRep" Content="C:\Images" HorizontalAlignment="Left" Height="31" Margin="361,37,0,0" VerticalAlignment="Top" Width="111"/>
-        <Button x:Name="GUIParent" Content="Parent" HorizontalAlignment="Left" Margin="901,25,0,0" VerticalAlignment="Top" Width="194" Height="109"/>
-        <Button x:Name="GUIUP" Content="UP" HorizontalAlignment="Left" Margin="336,69,0,0" VerticalAlignment="Top" Width="374" Height="55"/>
-        <Button x:Name="GUIDOWN" Content="DOWN" HorizontalAlignment="Left" Margin="336,711,0,0" VerticalAlignment="Top" Width="374" Height="56"/>
-        <ListView x:Name="GUIListRep" HorizontalAlignment="Left" Height="545" Margin="336,142,0,0" VerticalAlignment="Top" Width="374">
+        <ListView x:Name="GUIListRep" HorizontalAlignment="Left" Height="641" Margin="43,10,0,0" VerticalAlignment="Top" Width="1047">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBlock x:Name="GUIListFiles" HorizontalAlignment="Left" Margin="790,150,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="537" Width="282"/>
 
     </Grid>
 </Window>
