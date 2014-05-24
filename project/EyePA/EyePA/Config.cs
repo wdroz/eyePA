@@ -104,20 +104,21 @@ namespace EyePA
         private Config()
         {
             this.defaultPath = "C:\\images";
-            this.imagesW = 200;
-            this.imagesH = 150;
-            this.numberOfImages = 5;
             this.keyActivation = System.Windows.Input.Key.A;
             this.keyZoom = System.Windows.Input.Key.W;
             this.keyUnzoom = System.Windows.Input.Key.S;
             this.keyScroll = System.Windows.Input.Key.D;
             this.queryHandler = null;
 
-            zoomMaxValueReference = Double.Parse(ConfigurationManager.AppSettings["ZoomMaxValueReference"], CultureInfo.InvariantCulture);
-            srcReference = Double.Parse(ConfigurationManager.AppSettings["srcReference"], CultureInfo.InvariantCulture);
-            speedScroll = Double.Parse(ConfigurationManager.AppSettings["speedScroll"], CultureInfo.InvariantCulture);
-            zoomForce = Double.Parse(ConfigurationManager.AppSettings["zoomForce"], CultureInfo.InvariantCulture);
-            coefImageSizeZoom = Double.Parse(ConfigurationManager.AppSettings["coefImageSizeZoom"], CultureInfo.InvariantCulture);
+            this.zoomMaxValueReference = Double.Parse(ConfigurationManager.AppSettings["ZoomMaxValueReference"], CultureInfo.InvariantCulture);
+            this.srcReference = Double.Parse(ConfigurationManager.AppSettings["srcReference"], CultureInfo.InvariantCulture);
+            this.speedScroll = Double.Parse(ConfigurationManager.AppSettings["speedScroll"], CultureInfo.InvariantCulture);
+            this.zoomForce = Double.Parse(ConfigurationManager.AppSettings["zoomForce"], CultureInfo.InvariantCulture);
+            this.coefImageSizeZoom = Double.Parse(ConfigurationManager.AppSettings["coefImageSizeZoom"], CultureInfo.InvariantCulture);
+            this.imagesW = Int32.Parse(ConfigurationManager.AppSettings["imagesW"]);
+            this.imagesH = Int32.Parse(ConfigurationManager.AppSettings["imagesH"]);
+            this.numberOfImages = Int32.Parse(ConfigurationManager.AppSettings["numberOfImages"]);
+
 
         }
         public static Config getInstance()
