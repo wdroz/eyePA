@@ -60,6 +60,7 @@ namespace EyePA
         {
             this.url = url;
             this.image = new Image();
+            System.Console.Out.WriteLine("URL - "  +url);
             this.image.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(url));
             this.isSelected = false;
             this.isOnBigPicture = false;

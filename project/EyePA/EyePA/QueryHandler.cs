@@ -33,7 +33,7 @@ namespace EyePA
             {
                 //BeginInvoke(new Action<Rectangle>(HandleQueryOnUiThread), new Rectangle((int)x, (int)y, (int)w, (int)h));
                 //BeginInvoke(new Action<Rectangle>(this.eventManager.newQuery), new Rectangle(x,y,w,h)));
-                Application.Current.Dispatcher.Invoke(new Action(() => { this.eventManager.newQuery(new Rectangle((int)x,(int)y,(int)w,(int)h)); }));
+                Application.Current.Dispatcher.Invoke(new Action(() => { this.EventManager.newQuery(new Rectangle((int)x,(int)y,(int)w,(int)h)); }));
                 //this.eventManager.newQuery(x, y);
             }
         }

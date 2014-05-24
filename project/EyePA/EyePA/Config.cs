@@ -86,7 +86,8 @@ namespace EyePA
 
         public String DefaultPath
         {
-            get { return this.defaultPath; }
+            get { return Environment.ExpandEnvironmentVariables(this.defaultPath); }
+            set { this.defaultPath = value; }
         }
 
         public int ImagesW
@@ -150,6 +151,7 @@ namespace EyePA
             {
                 queryHandler = new QueryHandler(eventManager);
             }
+            queryHandler.EventManager = eventManager;
             return queryHandler;
         }
 

@@ -13,15 +13,17 @@ namespace EyePA
     public class ButtonNaviguateTo : ButtonView
     {
         private String rep;
+        private Naviguate naviguate;
 
         /// <summary>
         /// Constructeur
         /// </summary>
         /// <param name="btn">Bouton WPF sur lequel on se base</param>
         /// <param name="rep">Lieu sur le système de fichier</param>
-        public ButtonNaviguateTo(Button btn, String rep) : base(btn)
+        public ButtonNaviguateTo(Button btn, String rep, Naviguate naviguate) : base(btn)
         {
             this.rep = rep;
+            this.naviguate = naviguate;
         }
 
         public override void addKey(System.Windows.Input.KeyEventArgs e)
@@ -29,6 +31,10 @@ namespace EyePA
             if (e.Key == Config.getInstance().KeyActivation)
             {
                 //TODO faire action
+                Config.getInstance().DefaultPath = this.rep;
+                MainWindow mw = new MainWindow();
+                naviguate.Close();
+                mw.Show();
             }
         }
     }

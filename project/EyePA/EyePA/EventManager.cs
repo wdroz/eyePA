@@ -140,6 +140,8 @@ namespace EyePA
         {
             this.lastSelectedKeyAction = null;
             this.lastActionActivable = null;
+            this.lastActionScroll = null;
+            this.lastActionZoom = null;
             this.myActionsActivable.Clear();
             this.myKeyActions.Clear();
         }

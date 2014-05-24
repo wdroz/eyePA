@@ -11,7 +11,13 @@ namespace EyePA
     /// </summary>
     public abstract class QueryHandlerAbstract
     {
-        protected EventManager eventManager;
+        private EventManager eventManager;
+
+        public EventManager EventManager
+        {
+            get { return eventManager; }
+            set { eventManager = value; }
+        }
 
         public QueryHandlerAbstract(EventManager eventManager)
         {

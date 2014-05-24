@@ -70,16 +70,29 @@ namespace EyePA
         public void updateListView()
         {
            String[] files = Directory.GetFiles(filePath, "*.*");
+           int cpt = 0;
            foreach(String file in files)
            {
-               System.Console.WriteLine("file : " + file);
-               ImageView mv = new ImageView(file, bigImageView);
-               this.addView(mv);
+               if (isAnImage(file))
+               {
+                   cpt++;
+                   System.Console.WriteLine("file : " + file);
+                   ImageView mv = new ImageView(file, bigImageView);
+                   this.addView(mv);
+               }
            }
 
-           this.nbFiles = files.Length;
+           this.nbFiles = cpt;
            this.GUICurrentID.Text = currentId + "/" + nbFiles;
+        }
 
+        private bool isAnImage(string file)
+        {
+            string fileCopy = file.ToLower();
+            string[] fileCopySplitted = fileCopy.Split('.');
+            string extension = "."+fileCopySplitted.Last();
+            string[] supportedExtension = { ".jpg", ".jpeg", ".bmp", ".png", ".gif" };
+            return supportedExtension.Contains(extension);
         }
 
         public override FrameworkElement renderUI()

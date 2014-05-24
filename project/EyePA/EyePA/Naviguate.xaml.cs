@@ -78,15 +78,15 @@ namespace EyePA
             registerWatchable(bq, GUIQuit);
             registerActivable(bq, GUIQuit);
 
-            ButtonNaviguateTo btnMyDownload = new ButtonNaviguateTo(GUIDownload, "TODO");
+            ButtonNaviguateTo btnMyDownload = new ButtonNaviguateTo(GUIDownload, "%HOMEDRIVE%\\%HOMEPATH%\\Pictures", this);
             registerWatchable(btnMyDownload, GUIDownload);
             registerActivable(btnMyDownload, GUIDownload);
 
-            ButtonNaviguateTo btnMyImages = new ButtonNaviguateTo(GUIMyImages, "TODO");
+            ButtonNaviguateTo btnMyImages = new ButtonNaviguateTo(GUIMyImages, "%HOMEDRIVE%\\%HOMEPATH%\\Pictures", this);
             registerWatchable(btnMyImages, GUIMyImages);
             registerActivable(btnMyImages, GUIMyImages);
 
-            ButtonNaviguateTo btnBureau = new ButtonNaviguateTo(GUIBureau, "TODO");
+            ButtonNaviguateTo btnBureau = new ButtonNaviguateTo(GUIBureau, "%HOMEDRIVE%\\%HOMEPATH%\\Pictures", this);
             registerWatchable(btnBureau, GUIBureau);
             registerActivable(btnBureau, GUIBureau);
         }
