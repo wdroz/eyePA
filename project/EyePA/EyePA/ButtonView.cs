@@ -9,11 +9,20 @@ using System.Windows.Media;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Super classe des Boutons pour les eyes tracking.
+    ///  -> réagit quand on le regarde -> Watchable
+    ///  -> s'active sur demande -> Activable
+    /// </summary>
     public abstract class ButtonView : View, Activable, Watchable
     {
 
         private Button btn;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="btn">Bouton WPF sur lequel on se base</param>
         public ButtonView(Button btn)
         {
             this.btn = btn;

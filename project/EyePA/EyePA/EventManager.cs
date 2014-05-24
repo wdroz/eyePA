@@ -9,6 +9,9 @@ using Tobii.EyeX.Client;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Classe qui gère les différents evenements
+    /// </summary>
     public class EventManager
     {
 
@@ -50,7 +53,11 @@ namespace EyePA
         {
             this.lastActionScroll = actionScroll;
         }
-        
+        /// <summary>
+        /// Méthode qui est appelé par le device d'eyes tracking afin que celui-ci
+        /// déclanche l'évenement adéquat en fonction.
+        /// </summary>
+        /// <param name="rect">Zone qui définit le regarde de l'utilisateur</param>
         public void newQuery(Rectangle rect)
         {
             lastRectangle = rect;
@@ -58,6 +65,13 @@ namespace EyePA
             selectBestKeyAction<ActionActivate>(rect, myActionsActivable, ref lastActionActivable);
         }
 
+        /// <summary>
+        /// Sélectionne la meilleure KeyAction en fonction du regarde de l'utilisateur
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="rect">Zone qui définit le regarde de l'utilisateur</param>
+        /// <param name="actions">listes des KeyActions</param>
+        /// <param name="last">va contenir le keyAction choisit</param>
         private static void selectBestKeyAction<T>(Rectangle rect, List<T> actions, ref T last) where T : KeyAction
         {
             double max = 0;
@@ -85,6 +99,11 @@ namespace EyePA
             }
         }   
  
+        /// <summary>
+        /// Méthode qui définit quelle action entreprendre (si besoin) en fonction
+        /// de la touche appuyée par l'utilisateur
+        /// </summary>
+        /// <param name="e">touche enfoncée</param>
         public void newKey(KeyEventArgs e)
         {
             if (e.Key == Config.getInstance().KeyActivation)
@@ -114,7 +133,9 @@ namespace EyePA
             }
             
         }
-
+        /// <summary>
+        /// Méthode qui permet, comme son nom l'indique, de remettre à zero l'instance.
+        /// </summary>
         public void reset()
         {
             this.lastSelectedKeyAction = null;

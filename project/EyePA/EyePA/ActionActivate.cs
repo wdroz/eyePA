@@ -7,6 +7,11 @@ using System.Windows.Input;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Permet le contrôle d'une action "Activable".
+    ///   -> s'active quand l'utilisateur appuis sur la touche d'activation ('A' par défaut).
+    /// Un rectangle formé avec (x,y,w,h) définit la zone sur l'écran.
+    /// </summary>
     public class ActionActivate : KeyAction, Activable
     {
 

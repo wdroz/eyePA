@@ -10,6 +10,11 @@ using System.Windows.Media.Animation;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Grande zone composé d'un canvas, ayant comme source une image
+    ///    -> permet de Scroller dans l'image
+    ///    -> permet de zoomer dans l'image
+    /// </summary>
     public class BigImageView : View, Scrollable, Zoomable
     {
 
@@ -50,7 +55,10 @@ namespace EyePA
                 }
             }
         }
-
+        /// <summary>
+        /// permet de changer l'image source sans refaire une instance
+        /// </summary>
+        /// <param name="imv">La nouvelle image</param>
         public void setImageView(ImageView imv)
         {
             this.imageView.unselect();
@@ -58,7 +66,12 @@ namespace EyePA
             this.reset();
             setZoomMaxValue(imv);
         }
-
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="imageView">L'image source</param>
+        /// <param name="cv">Le canvas sur lequel on travail</param>
+        /// <param name="zoomFactor">le label qui va contenir l'information du niveau de zoom</param>
         public BigImageView(ImageView imageView, Canvas cv, Label zoomFactor)
         {
             this.imageView = imageView;
@@ -152,5 +165,6 @@ namespace EyePA
             m.Translate(x * speedScroll, y * speedScroll);
             canvas.Background.Transform = new MatrixTransform(m);
         }
+
     }
 }

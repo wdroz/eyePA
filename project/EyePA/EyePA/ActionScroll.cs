@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Permet le contrôle d'une action "Scrollable".
+    ///    -> permet de se déplacer dans un context.
+    /// Un rectangle formé avec (x,y,w,h) définit la zone sur l'écran.
+    /// </summary>
     public class ActionScroll : KeyAction, Scrollable
     {
 

@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Permet le contrôle d'une action "Zoomable".
+    ///    -> Permet de zoomer et dézoomer
+    /// Un rectangle formé avec (x,y,w,h) définit la zone sur l'écran.
+    /// </summary>
     public class ActionZoom : KeyAction, Zoomable
     {
         private Zoomable zoomable;

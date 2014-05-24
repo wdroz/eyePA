@@ -9,6 +9,9 @@ using Tobii.EyeX.Client;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Query handler pour tobii rex
+    /// </summary>
     public class QueryHandler : QueryHandlerAbstract
     {
         private InteractionSystem _system;

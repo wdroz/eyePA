@@ -10,6 +10,9 @@ using System.Windows.Media.Effects;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Définit une image miniature.
+    /// </summary>
     public class ImageView : View, Watchable, Activable
     {
 
@@ -24,6 +27,9 @@ namespace EyePA
             get { return image; }
         }
 
+        /// <summary>
+        /// Informe que celle-ci est l'image qui est entrain d'être utilisé par la BigImageView
+        /// </summary>
         public void select()
         {
             isOnBigPicture = true;
@@ -36,12 +42,20 @@ namespace EyePA
             };
         }
 
+        /// <summary>
+        /// Informe que l'image n'est pas sélectionnée
+        /// </summary>
         public void unselect()
         {
             isOnBigPicture = false;
             stopWatching();
         }
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="url">chemin de l'image source</param>
+        /// <param name="bigImageView"></param>
         public ImageView(String url, BigImageView bigImageView)
         {
             this.url = url;

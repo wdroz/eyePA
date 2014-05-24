@@ -8,6 +8,10 @@ using System.Globalization;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Singleton de configuration
+    ///   -> permet d'avoir une base de connaissance des paramètres de configuration
+    /// </summary>
     class Config
     {
 
@@ -121,6 +125,10 @@ namespace EyePA
 
 
         }
+        /// <summary>
+        /// Simple Singleton...
+        /// </summary>
+        /// <returns>Instance de Config</returns>
         public static Config getInstance()
         {
             if(instance == null)
@@ -130,6 +138,11 @@ namespace EyePA
             return instance;
         }
 
+        /// <summary>
+        /// Retourne une instance unique de QueryHandler en fonction des paramètres du fichier de configuration
+        /// </summary>
+        /// <param name="eventManager"></param>
+        /// <returns></returns>
         public QueryHandlerAbstract getQueryHandler(EventManager eventManager)
         {
             //TODO test si on utilise tobii ou l'autre machin

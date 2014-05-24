@@ -9,6 +9,10 @@ using System.Windows.Controls;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Classe qui gère les petites images dans la liste et qui connaît la BigPicture
+    /// -> Responsable de connaître quelle petite image est sélectionné
+    /// </summary>
     public class ListViewImage : ListView, Watchable, Activable
     {
         private System.Windows.Controls.ListView GUIListView;
@@ -19,6 +23,13 @@ namespace EyePA
         private BigImageView bigImageView;
         private ImageView lastSelectedImage;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="filePath">chemin du repertoire afficher</param>
+        /// <param name="listView1">élément WPF pour contenir les petites images</param>
+        /// <param name="bigImageView"></param>
+        /// <param name="GUICurrentID">label qui va contenir l'indice de l'image regardé</param>
         public ListViewImage(String filePath, System.Windows.Controls.ListView listView1, BigImageView bigImageView, TextBlock GUICurrentID) : base()
         {
             this.GUICurrentID = GUICurrentID;
@@ -30,7 +41,9 @@ namespace EyePA
             currentId = 1;
             updateListView();
         }
-
+        /// <summary>
+        /// Permet d'afficher les images suivantes à gauche
+        /// </summary>
         public void scrollLeft()
         {
             if (currentId > 0)
@@ -39,7 +52,9 @@ namespace EyePA
             }
             GUIListView.ScrollIntoView(listView.ElementAt(currentId).renderUI());
         }
-
+        /// <summary>
+        /// Permet d'afficher les images suivantes à droite
+        /// </summary>
         public void scrollRight()
         {
             if(currentId < (listView.Count-1))
@@ -49,6 +64,9 @@ namespace EyePA
             GUIListView.ScrollIntoView(listView.ElementAt(currentId).renderUI());
         }
 
+        /// <summary>
+        /// Permet de mettre à jour la liste view
+        /// </summary>
         public void updateListView()
         {
            String[] files = Directory.GetFiles(filePath, "*.*");

@@ -34,7 +34,9 @@ namespace EyePA
 
             formInit();
         }
-
+        /// <summary>
+        /// initialise la forme
+        /// </summary>
         public void formInit()
         {
             this.hasRezized = false;
@@ -45,6 +47,9 @@ namespace EyePA
             updateFolder();
         }
 
+        /// <summary>
+        /// permet de mettre à jour le repertoire
+        /// </summary>
         public void updateFolder()
         {
             this.bigImageView = new BigImageView(null, GUIBigPicture, GUILabelZoomFactor);
@@ -65,6 +70,9 @@ namespace EyePA
             
         }
 
+        /// <summary>
+        /// demande la forme qui permet de changer de repertoire
+        /// </summary>
         public void changeDirectory()
         {
             /*
@@ -120,6 +128,9 @@ namespace EyePA
             }
         }
 
+        /// <summary>
+        /// Enregistre les différents éléments dans l'event manager
+        /// </summary>
         private void register()
         {
             //TODO encapsuler les actions dans les interfaces

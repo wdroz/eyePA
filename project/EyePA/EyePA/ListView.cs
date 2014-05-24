@@ -7,6 +7,9 @@ using System.Windows;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Classe composite qui permet de gérer dans autre View
+    /// </summary>
     public abstract class ListView : View
     {
 

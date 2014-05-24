@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Permet le contrôle d'une action "Watchable".
+    ///    -> Qui régagit lorsqu'on le regarde.
+    /// Un rectangle formé avec (x,y,w,h) définit la zone sur l'écran.
+    /// </summary>
     public class ActionWatch : KeyAction
     {
 

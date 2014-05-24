@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Classe responsable d'informer l'EventManager quand une touche est appuyée
+    /// </summary>
     class KeyHandler
     {
 

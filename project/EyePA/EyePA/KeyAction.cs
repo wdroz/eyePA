@@ -8,6 +8,9 @@ using System.Windows.Input;
 
 namespace EyePA
 {
+    /// <summary>
+    /// super classe des actions associté à des touches
+    /// </summary>
     public abstract class KeyAction
     {
 
@@ -19,6 +22,13 @@ namespace EyePA
         protected Rectangle rectangle;
         protected Rectangle lastRect;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="x">X</param>
+        /// <param name="y">Y</param>
+        /// <param name="w">width</param>
+        /// <param name="h">height</param>
         public KeyAction(double x, double y, double w, double h)
         {
             this.x = x;
@@ -29,7 +39,10 @@ namespace EyePA
             this.rectangle = new Rectangle((int)x, (int)y, (int)w, (int)h);
             this.lastRect = new Rectangle((int)x, (int)y, (int)w, (int)h);
         }
-
+        /// <summary>
+        /// Démarre l'action si cela nous concerne
+        /// </summary>
+        /// <param name="rect"></param>
         public void runAction(Rectangle rect)
         {
             this.lastRect.X = rect.X;
@@ -39,6 +52,11 @@ namespace EyePA
             actionIfForMe();
         }
 
+        /// <summary>
+        /// Permet de connaître l'intersection entre la zone de la keyAction et celle du regarde de l'utilisateur
+        /// </summary>
+        /// <param name="rect">Zone du regard</param>
+        /// <returns>la surface normalisé -> (0 si pas d'intersection, 1 si l'intersection comprend complétement l'élément)</returns>
         public double giveInterception(Rectangle rect)
         {
             Rectangle rectIntersection = Rectangle.Intersect(rect, this.rectangle);
@@ -64,11 +82,16 @@ namespace EyePA
             return false;
         }
 
+        /// <summary>
+        /// Définit qu'est-ce qu'il faut faire si l'action est pour ce contrôle
+        /// </summary>
         public virtual void actionIfForMe()
         {
 
         }
-
+        /// <summary>
+        /// Définit qu'est-ce qu'il faut faire si l'action n'est pas pour ce contrôle
+        /// </summary>
         public virtual void actionIfNotForMe()
         {
 

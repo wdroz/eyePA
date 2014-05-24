@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EyePA
 {
+    /// <summary>
+    /// classe qui gère un device d'eye tracking
+    /// </summary>
     public abstract class QueryHandlerAbstract
     {
         protected EventManager eventManager;

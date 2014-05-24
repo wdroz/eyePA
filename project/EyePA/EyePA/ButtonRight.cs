@@ -8,6 +8,9 @@ using System.Windows.Controls;
 
 namespace EyePA
 {
+    /// <summary>
+    /// Bouton qui permet d'effectuer un scroll à droite dans une listViewImage
+    /// </summary>
     public class ButtonRight : ButtonView
     {
         private ListViewImage listViewImage;
