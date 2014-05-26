@@ -177,10 +177,33 @@ namespace EyePA
             //TODO test si on utilise tobii ou l'autre machin
             if(queryHandler == null)
             {
-                queryHandler = new QueryHandler(eventManager);
+                String name = ConfigurationManager.AppSettings["device"];
+                queryHandler = selectDevice(name, eventManager);
+                if(queryHandler == null)
+                {
+                    string defaultDevice = ConfigurationManager.AppSettings["defaultDevice"];
+                    queryHandler = selectDevice(defaultDevice, eventManager);
+                }
+                return queryHandler;
             }
             queryHandler.EventManager = eventManager;
             return queryHandler;
+        }
+
+        private QueryHandlerAbstract selectDevice(string name, EventManager eventManager)
+        {
+            if(name.Equals("Tobii"))
+            {
+                return new QueryHandler(eventManager);
+            }
+            else if(name.Equals("Tribe"))
+            {
+                return new QueryHandlerTribe(eventManager);
+            }
+            else
+            {
+                return null;
+            }
         }
 
 

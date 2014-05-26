@@ -46,7 +46,8 @@ namespace EyePA
                 btn.Margin = new System.Windows.Thickness(100, 100, 0, 0);
                 btn.Content = item;
                 this.listRep.Add(btn);
-                this.GUIListRep.Items.Add(btn);
+                this.GUIListRep.Children.Add(btn);
+                //this.GUIListRep.Items.Add(btn);
             }
 
         }

@@ -22,6 +22,7 @@ namespace EyePA
         {
             if(e.Key == Config.getInstance().KeyActivation)
             {
+                Config.getInstance().getQueryHandler(null).close();
                 Application.Current.Shutdown();
             }
         }

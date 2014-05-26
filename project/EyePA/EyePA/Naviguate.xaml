@@ -5,13 +5,7 @@
     <Grid>
         <Button x:Name="GUICancel" Content="Annuler" HorizontalAlignment="Left" Margin="865,711,0,0" VerticalAlignment="Top" Width="239" Height="111"/>
         <Button x:Name="GUIQuit" Content="Quitter" HorizontalAlignment="Left" Margin="43,711,0,0" VerticalAlignment="Top" Width="239" Height="111"/>
-        <ListView x:Name="GUIListRep" HorizontalAlignment="Left" Height="641" Margin="43,10,0,0" VerticalAlignment="Top" Width="1047">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <WrapPanel x:Name="GUIListRep" HorizontalAlignment="Left" Height="646" Margin="28,27,0,0" VerticalAlignment="Top" Width="1063"/>
 
     </Grid>
 </Window>

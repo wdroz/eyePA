@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -45,6 +48,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TETCSharpClient">
+      <HintPath>..\lib\TETCSharpClient.dll</HintPath>
     </Reference>
     <Reference Include="Tobii.EyeX.Client.Net20">
       <HintPath>..\lib\Tobii.EyeX.Client.Net20.dll</HintPath>
@@ -83,6 +89,7 @@
     </Compile>
     <Compile Include="QueryHandler.cs" />
     <Compile Include="QueryHandlerAbstract.cs" />
+    <Compile Include="QueryHandlerTribe.cs" />
     <Compile Include="Scrollable.cs" />
     <Compile Include="View.cs" />
     <Compile Include="Watchable.cs" />
