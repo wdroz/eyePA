@@ -174,7 +174,6 @@ namespace EyePA
         /// <returns></returns>
         public QueryHandlerAbstract getQueryHandler(EventManager eventManager)
         {
-            //TODO test si on utilise tobii ou l'autre machin
             if(queryHandler == null)
             {
                 String name = ConfigurationManager.AppSettings["device"];
@@ -194,10 +193,12 @@ namespace EyePA
         {
             if(name.Equals("Tobii"))
             {
+                System.Console.Out.WriteLine("*** Selected Tobii ***");
                 return new QueryHandler(eventManager);
             }
             else if(name.Equals("Tribe"))
             {
+                System.Console.Out.WriteLine("*** Selected Tribe ***");
                 return new QueryHandlerTribe(eventManager);
             }
             else
