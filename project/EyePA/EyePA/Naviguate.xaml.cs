@@ -37,6 +37,8 @@ namespace EyePA
             this.keyHandler = new KeyHandler(eventManager);
             this.eventManager.reset();
 
+
+
             this.listRep = new List<Button>();
             foreach(string item in Config.getInstance().ListDossiers)
             {
@@ -90,7 +92,9 @@ namespace EyePA
             registerWatchable(bq, GUIQuit);
             registerActivable(bq, GUIQuit);
 
-           
+            ButtonNaviguateTo btnCancel = new ButtonNaviguateTo(this.GUICancel, this.previousRep, this);
+            registerWatchable(btnCancel, GUICancel);
+            registerActivable(btnCancel, GUICancel);
 
             foreach(Button btn in this.listRep)
             {
