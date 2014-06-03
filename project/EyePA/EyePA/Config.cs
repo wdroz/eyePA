@@ -115,7 +115,7 @@ namespace EyePA
 
         private Config()
         {
-            this.defaultPath = "C:\\images";
+            this.defaultPath = "";
             this.keyActivation = System.Windows.Input.Key.A;
             this.keyZoom = System.Windows.Input.Key.W;
             this.keyUnzoom = System.Windows.Input.Key.S;
@@ -131,6 +131,7 @@ namespace EyePA
             this.imagesH = Int32.Parse(ConfigurationManager.AppSettings["imagesH"]);
             this.numberOfImages = Int32.Parse(ConfigurationManager.AppSettings["numberOfImages"]);
             this.listDossiers = ConfigurationManager.AppSettings["listDossiers"].Split('\n');
+            this.defaultPath = ConfigurationManager.AppSettings["defaultPath"];
             List<String> list = new List<String>();
             
             
