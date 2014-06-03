@@ -1,7 +1,7 @@
 ﻿<Window x:Class="EyePA.Naviguate"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Naviguate" Height="880.225" Width="1136.9" KeyDown="Window_KeyDown" SizeChanged="Window_SizeChanged">
+        Title="choisir le dossier" Height="880.225" Width="1136.9" KeyDown="Window_KeyDown" SizeChanged="Window_SizeChanged">
     <Grid>
         <Button x:Name="GUICancel" Content="Annuler" HorizontalAlignment="Left" Margin="865,711,0,0" VerticalAlignment="Top" Width="239" Height="111"/>
         <Button x:Name="GUIQuit" Content="Quitter" HorizontalAlignment="Left" Margin="43,711,0,0" VerticalAlignment="Top" Width="239" Height="111"/>
